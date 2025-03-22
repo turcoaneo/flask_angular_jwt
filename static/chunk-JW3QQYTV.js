@@ -1,0 +1,1 @@
+import{Aa as i,Ba as o,Ea as s,sa as t}from"./chunk-3B5IQMS6.js";var p=class e{static \u0275fac=function(n){return new(n||e)};static \u0275cmp=t({type:e,selectors:[["app-sign-in"]],decls:2,vars:0,template:function(n,m){n&1&&(i(0,"p"),s(1,"sign-in works!"),o())},encapsulation:2})};export{p as SignInComponent};
