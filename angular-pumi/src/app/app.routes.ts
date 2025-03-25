@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import {AuthGuardService} from './auth/auth.guards';
 
 export const appRoutes: Route[] = [
   {
@@ -8,6 +9,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'home',
+    canActivate: [AuthGuardService],
     loadComponent: () =>
       import('./home/home.component').then((m) => m.HomeComponent)
   },
