@@ -8,7 +8,7 @@ import {REF} from '../../constants/list';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
+  styleUrls: ['./sign-up.component.css', '../common-css/style.css'],
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })
@@ -40,7 +40,7 @@ export class SignUpComponent {
     console.log('Email: ', signUpEmail, ' - pass: ', signUpPass, ' - confirm: ', signUpConfirmPass)
   }
 
-  togglePassInputView() {
+  toggleConfirmPassInputView() {
     this.hide = !this.hide;
   }
 }

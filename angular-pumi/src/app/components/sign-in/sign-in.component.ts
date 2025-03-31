@@ -8,7 +8,7 @@ import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.compone
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  styleUrls: ['./sign-in.component.css', '../common-css/style.css'],
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })

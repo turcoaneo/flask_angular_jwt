@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './user-pass-group.component.html',
-  styleUrl: './user-pass-group.component.css',
+  styleUrls: ['./user-pass-group.component.css', '../common-css/style.css'],
   viewProviders: [
     {
       provide: ControlContainer,
