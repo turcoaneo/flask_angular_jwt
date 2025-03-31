@@ -1,6 +1,6 @@
 <div class="mb-2">
   <form [formGroup]="signInForm" (ngSubmit)="formSubmit(signInForm)">
-    <app-user-pass-form [formParent]="signInForm"></app-user-pass-form>
+    <app-user-pass-group></app-user-pass-group>
     <button type="submit" class="btn btn-primary" id="login-submit">Submit</button>
   </form>
 </div>

@@ -1,22 +1,18 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms'
+import {FormGroup, ReactiveFormsModule} from '@angular/forms'
 import {RouterLink} from '@angular/router';
-import {UserPassFormComponent} from '../user-pass-form/user-pass-form.component';
+import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.component';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassFormComponent]
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })
 export class SignInComponent {
   signInForm = new FormGroup({
-    userPassGroup: new FormGroup({
-      signInEmail: new FormControl(''),
-      signInPass: new FormControl(''),
-    }),
   });
 
   formSubmit(form: FormGroup) {

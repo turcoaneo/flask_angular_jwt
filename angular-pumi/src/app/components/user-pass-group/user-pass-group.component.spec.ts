@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserPassFormComponent } from './user-pass-form.component';
+import { UserPassGroupComponent } from './user-pass-group.component';
 
 describe('UserPassFormComponent', () => {
-  let component: UserPassFormComponent;
-  let fixture: ComponentFixture<UserPassFormComponent>;
+  let component: UserPassGroupComponent;
+  let fixture: ComponentFixture<UserPassGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserPassFormComponent]
+      imports: [UserPassGroupComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserPassFormComponent);
+    fixture = TestBed.createComponent(UserPassGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
