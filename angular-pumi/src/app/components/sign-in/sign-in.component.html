@@ -1,6 +1,6 @@
 <div class="mb-2">
   <form [formGroup]="signInForm" (ngSubmit)="formSubmit(signInForm)">
-    <app-user-pass-group></app-user-pass-group>
+    <app-user-pass-group componentKey={{formKey}} componentEmail={{formEmail}} componentPass={{formPass}} />
     <button type="submit" class="btn btn-primary" id="login-submit">Submit</button>
   </form>
 </div>

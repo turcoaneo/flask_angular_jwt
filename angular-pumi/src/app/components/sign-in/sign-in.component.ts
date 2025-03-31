@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
+import {REF} from '../../constants/list';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms'
 import {RouterLink} from '@angular/router';
 import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.component';
@@ -12,16 +13,19 @@ import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.compone
   imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })
 export class SignInComponent {
-  signInForm = new FormGroup({
-  });
+  formKey= 'signInUserPass';
+  formEmail= 'signInEmail';
+  formPass= 'signInPass';
+
+  signInForm = new FormGroup({});
 
   formSubmit(form: FormGroup) {
     if (!form.valid) {
       console.log('Form not valid!');
       return;
     }
-    let signInEmail = form.get('userPassGroup.signInEmail')?.value;
-    let signInPass = form.get('userPassGroup.signInPass')?.value;
+    let signInEmail = form.get(this.formKey + REF + this.formEmail)?.value;
+    let signInPass = form.get(this.formKey + REF + this.formPass)?.value;
     console.log('Email: ', signInEmail, ' - pass: ', signInPass)
   }
 }

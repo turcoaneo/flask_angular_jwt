@@ -1,28 +1,28 @@
-<fieldset formGroupName="userPassGroup">
-  <label for="signInEmail">Email</label>
-  <input formControlName="signInEmail" name="signInEmail" type="text" id="signInEmail" aria-describedby="signInHelp"
-         placeholder="Enter email">
+<fieldset formGroupName={{componentKey}}>
+  <label for={{componentEmail}}>Email</label>
+  <input formControlName={{componentEmail}} name={{componentEmail}} type="text" id={{componentEmail}}
+         aria-describedby="signInHelp" placeholder="Enter email">
   <small id="signInHelp" class="form-text text-muted block mt-6">Use email pattern (user[at]domain.com)!</small>
   <small class="error block"
-         *ngIf="parentFormGroup.dirty && parentFormGroup.controls['userPassGroup']?.get('signInEmail')?.errors?.['required']">
+         *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentEmail)?.errors?.['required']">
     Email is required!
   </small>
   <small class="error block"
-         *ngIf="parentFormGroup.dirty && parentFormGroup.controls['userPassGroup']?.get('signInEmail')?.errors?.['pattern']">
+         *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentEmail)?.errors?.['pattern']">
     Email does not match the usual pattern (name[at]domain.com)!
   </small>
-  <label for="signInPass">Password</label>
-  <input formControlName="signInPass" name="signInPass" type="password" id="signInPass"
+  <label for={{componentPass}}>Password</label>
+  <input formControlName={{componentPass}} name={{componentPass}} type="password" id={{componentPass}}
          aria-describedby="signInHelp" placeholder="*********">
   <small id="signInPassHelp" class="form-text text-muted block mt-6">
     Minimum eight characters, at least one letter, one number and one special character!
   </small>
   <small class="error block"
-         *ngIf="parentFormGroup.dirty && parentFormGroup.controls['userPassGroup']?.get('signInPass')?.errors?.['required']">
+         *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentPass)?.errors?.['required']">
     Password is required!
   </small>
   <small class="error block"
-         *ngIf="parentFormGroup.dirty && parentFormGroup.controls['userPassGroup']?.get('signInPass')?.errors?.['pattern']">
+         *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentPass)?.errors?.['pattern']">
     Password does not match the required pattern!
   </small>
 </fieldset>

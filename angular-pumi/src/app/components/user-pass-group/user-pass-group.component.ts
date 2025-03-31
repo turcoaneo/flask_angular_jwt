@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {ControlContainer, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
@@ -16,6 +16,9 @@ import {CommonModule} from '@angular/common';
   ],
 })
 export class UserPassGroupComponent implements OnInit {
+  @Input({required: true}) componentKey = '';
+  @Input({required: true}) componentEmail = '';
+  @Input({required: true}) componentPass = '';
   parentContainer = inject(ControlContainer);
   signInEmailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   signInPassPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
@@ -25,21 +28,20 @@ export class UserPassGroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parentFormGroup.addControl('userPassGroup', new FormGroup({
-      signInEmail: new FormControl('', [
-          Validators.required,
-          Validators.pattern(this.signInEmailPattern),
-        ]),
-        signInPass: new FormControl('', [
-          Validators.required,
-          Validators.pattern(this.signInPassPattern),
-        ]),
-      }),
-    );
+    let formGroup = new FormGroup({});
+    formGroup.addControl(this.componentEmail, new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.signInEmailPattern),
+    ]));
+    formGroup.addControl(this.componentPass, new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.signInPassPattern),
+    ]));
+    this.parentFormGroup.addControl(this.componentKey, formGroup);
   }
 
   ngOnDestroy() {
-    this.parentFormGroup.removeControl('userPassGroup');
+    this.parentFormGroup.removeControl(this.componentKey);
   }
 
 }
