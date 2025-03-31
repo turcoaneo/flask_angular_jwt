@@ -1,0 +1,35 @@
+<ng-container [formGroup]="formParent">
+  <fieldset formGroupName="userPassGroup" [formGroup]="userPassGroup">
+    <fieldset>
+      <label for="signInEmail">Email</label>
+      <input formControlName="signInEmail" name="signInEmail" type="text" id="signInEmail" aria-describedby="signInHelp"
+             placeholder="Enter email">
+      <small id="signInHelp" class="form-text text-muted block mt-6">Use email pattern (user[at]domain.com)!</small>
+      <small class="error block"
+             *ngIf="userPassGroup.controls.signInEmail.dirty && userPassGroup.controls.signInEmail.errors?.['required']">
+        Email is required!
+      </small>
+      <small class="error block"
+             *ngIf="userPassGroup.controls.signInEmail.dirty && userPassGroup.controls.signInEmail.errors?.['pattern']">
+        Email does not match the usual pattern (name[at]domain.com)!
+      </small>
+    </fieldset>
+    <fieldset>
+      <label for="signInPass">Password</label>
+      <input formControlName="signInPass" name="signInPass" type="password" id="signInPass"
+             aria-describedby="signInHelp" placeholder="*********">
+      <small id="signInPassHelp" class="form-text text-muted block mt-6">
+        Minimum eight characters, at least one letter, one number and one special character!
+      </small>
+      <small class="error block"
+             *ngIf="userPassGroup.controls.signInPass.dirty && userPassGroup.controls.signInPass.errors?.['required']">
+        Password is required!
+      </small>
+      <small class="error block"
+             *ngIf="userPassGroup.controls.signInPass.dirty && userPassGroup.controls.signInPass.errors?.['pattern']">
+        Password does not match the required pattern!
+      </small>
+    </fieldset>
+  </fieldset>
+
+</ng-container>

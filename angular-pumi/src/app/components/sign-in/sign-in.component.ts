@@ -1,27 +1,22 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms'
 import {RouterLink} from '@angular/router';
+import {UserPassFormComponent} from '../user-pass-form/user-pass-form.component';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink]
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassFormComponent]
 })
 export class SignInComponent {
-  signInEmailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  signInPassPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   signInForm = new FormGroup({
-    signInEmail: new FormControl('', [
-      Validators.required,
-      Validators.pattern(this.signInEmailPattern),
-    ]),
-    signInPass: new FormControl('', [
-      Validators.required,
-      Validators.pattern(this.signInPassPattern),
-    ]),
+    userPassGroup: new FormGroup({
+      signInEmail: new FormControl(''),
+      signInPass: new FormControl(''),
+    }),
   });
 
   formSubmit(form: FormGroup) {
@@ -29,8 +24,8 @@ export class SignInComponent {
       console.log('Form not valid!');
       return;
     }
-    let signInEmail = form.controls['signInEmail'].value;
-    let signInPass = form.controls['signInPass'].value;
+    let signInEmail = form.get('userPassGroup.signInEmail')?.value;
+    let signInPass = form.get('userPassGroup.signInPass')?.value;
     console.log('Email: ', signInEmail, ' - pass: ', signInPass)
   }
 }
