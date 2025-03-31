@@ -12,8 +12,12 @@
     Email does not match the usual pattern (name[at]domain.com)!
   </small>
   <label for={{componentPass}}>Password</label>
-  <input formControlName={{componentPass}} name={{componentPass}} type="password" id={{componentPass}}
-         aria-describedby="signInHelp" placeholder="*********">
+  <span class="input-placeholder">
+    <input formControlName={{componentPass}} name={{componentPass}} type="password" id={{componentPass}}
+           style="float: left" [type]="hideText ? 'password' : 'text'"
+           aria-describedby="signInHelp" placeholder="*********">
+    <i [class]="hideText ? 'bi bi-eye-slash' : 'bi bi-eye'" id="togglePass" (click)="togglePassInputView()"></i>
+  </span>
   <small id="signInPassHelp" class="form-text text-muted block mt-6">
     Minimum eight characters, at least one letter, one number and one special character!
   </small>
