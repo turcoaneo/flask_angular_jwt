@@ -44,4 +44,10 @@ export class UserPassGroupComponent implements OnInit {
     this.parentFormGroup.removeControl(this.componentKey);
   }
 
+
+  hideText: boolean = true;
+  togglePassInputView() {
+    this.hideText = !this.hideText;
+  }
+
 }
