@@ -14,7 +14,7 @@ input {
   margin-bottom: 15px;
   padding: 10px;
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 1px solid #666;
   border-radius: 5px;
 }
 
@@ -25,13 +25,13 @@ button {
   margin-bottom: 15px;
   border: none;
   color: white;
-  background-color: #333;
+  background-color: #999;
   width: 100%;
   font-size: 24px;
   cursor: pointer;
   &:hover {
-    color: #333;
-    background-color: #999;
+    color: #666;
+    background-color: #333;
   }
 }
 

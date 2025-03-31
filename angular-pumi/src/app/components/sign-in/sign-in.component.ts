@@ -26,6 +26,6 @@ export class SignInComponent {
     }
     let signInEmail = form.get(this.formKey + REF + this.formEmail)?.value;
     let signInPass = form.get(this.formKey + REF + this.formPass)?.value;
-    console.log('Email: ', signInEmail, ' - pass: ', signInPass)
+    console.log('Email: ', signInEmail, ' - pass: ', signInPass);
   }
 }

@@ -1,53 +1,23 @@
 <div class="mb-2">
   <form [formGroup]="signUpForm" (ngSubmit)="formSubmit(signUpForm)">
-    <fieldset>
-      <label for="signUpEmail">Email</label>
-      <input formControlName="signUpEmail" name="signUpEmail" type="text" id="signUpEmail" aria-describedby="signUpHelp"
-             placeholder="Enter email">
-      <small id="signUpHelp" class="form-text text-muted block mt-6">Use email pattern (user[at]domain.com)!</small>
-      <small class="error block"
-             *ngIf="signUpForm.controls.signUpEmail.dirty && signUpForm.controls.signUpEmail.errors?.['required']">
-        Email is required!
-      </small>
-      <small class="error block"
-             *ngIf="signUpForm.controls.signUpEmail.dirty && signUpForm.controls.signUpEmail.errors?.['pattern']">
-        Email does not match the usual pattern (name[at]domain.com)!
-      </small>
-    </fieldset>
-    <fieldset>
-      <label for="signUpPass">Password</label>
-      <input formControlName="signUpPass" name="signUpPass" type="password" id="signUpPass"
-             aria-describedby="signUpHelp" placeholder="*********">
-      <small id="signUpPassHelp" class="form-text text-muted block mt-6">
-        Minimum eight characters, at least one letter, one number and one special character!
-      </small>
-      <small class="error block" *ngIf="signUpForm.dirty && signUpForm.controls.signUpPass.errors?.['required']">
-        Password is required!
-      </small>
-      <small class="error block" *ngIf="signUpForm.dirty && signUpForm.controls.signUpPass.errors?.['pattern']">
-        Password does not match the required pattern!
-      </small>
-    </fieldset>
+    <app-user-pass-group componentKey={{formKey}} componentEmail={{formEmail}} componentPass={{formPass}} />
     <fieldset>
       <label for="signUpConfirmPass">Confirm password</label>
-      <input formControlName="signUpConfirmPass" name="signUpConfirmPass" type="password" id="signUpConfirmPass"
+      <span class="input-placeholder">
+      <input formControlName="signUpConfirmPass" name="signUpConfirmPass" id="signUpConfirmPass"
+             style="float: left" [type]="hide ? 'password' : 'text'"
              placeholder="Confirm password" aria-describedby="signUpConfirmHelp" onpaste="return false;"
              onDrag="return false" onDrop="return false" autocomplete="off">
+      <i [class]="hide ? 'bi bi-eye-slash' : 'bi bi-eye'" id="togglePassword" (click)="togglePassInputView()"></i>
+      </span>
       <small id="signUpConfirmPassHelp" class="form-text text-muted block mt-6">Re-type your password!</small>
       <small class="error block" *ngIf="signUpForm.controls.signUpConfirmPass.dirty &&
              signUpForm.controls.signUpConfirmPass.errors?.['required']">
         Password confirmation is required!
       </small>
-      <small class="error block" *ngIf="signUpForm.controls.signUpConfirmPass.dirty && isInvaliPassConfirmation()">
+      <small class="error block" *ngIf="signUpForm.dirty && isInvaliPassConfirmation()">
         Password confirmation does not match the former password!
       </small>
-    </fieldset>
-    <fieldset>
-      <span class="input-placeholder">
-        <input style="float: left" type="password" id="inputPassword" name="password" [type]="hide ? 'password' : 'text'"
-       placeholder="Enter password" required>
-        <i [class]="hide ? 'bi bi-eye-slash' : 'bi bi-eye'" id="togglePassword" (click)="myFunction()"></i>
-      </span>
     </fieldset>
     <button type="submit" class="btn btn-primary" id="login-submit">Submit</button>
   </form>
