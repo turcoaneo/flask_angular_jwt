@@ -1,36 +1,31 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
+import {REF} from '../../constants/list';
+import {FormGroup, ReactiveFormsModule} from '@angular/forms'
 import {RouterLink} from '@angular/router';
+import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.component';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  styleUrls: ['./sign-in.component.css', '../common-css/style.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink]
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })
 export class SignInComponent {
-  signInEmailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  signInPassPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-  signInForm = new FormGroup({
-    signInEmail: new FormControl('', [
-      Validators.required,
-      Validators.pattern(this.signInEmailPattern),
-    ]),
-    signInPass: new FormControl('', [
-      Validators.required,
-      Validators.pattern(this.signInPassPattern),
-    ]),
-  });
+  formKey= 'signInUserPass';
+  formEmail= 'signInEmail';
+  formPass= 'signInPass';
+
+  signInForm = new FormGroup({});
 
   formSubmit(form: FormGroup) {
     if (!form.valid) {
       console.log('Form not valid!');
       return;
     }
-    let signInEmail = form.controls['signInEmail'].value;
-    let signInPass = form.controls['signInPass'].value;
-    console.log('Email: ', signInEmail, ' - pass: ', signInPass)
+    let signInEmail = form.get(this.formKey + REF + this.formEmail)?.value;
+    let signInPass = form.get(this.formKey + REF + this.formPass)?.value;
+    console.log('Email: ', signInEmail, ' - pass: ', signInPass);
   }
 }

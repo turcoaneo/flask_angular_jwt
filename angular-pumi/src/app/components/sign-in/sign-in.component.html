@@ -1,31 +1,6 @@
 <div class="mb-2">
   <form [formGroup]="signInForm" (ngSubmit)="formSubmit(signInForm)">
-    <fieldset>
-      <label for="signInEmail">Email</label>
-      <input formControlName="signInEmail" name="signInEmail" type="text" id="signInEmail" aria-describedby="signInHelp"
-             placeholder="Enter email">
-      <small id="signInHelp" class="form-text text-muted block mt-6">Use email pattern (user[at]domain.com)!</small>
-      <small class="error block" *ngIf="signInForm.dirty && signInForm.controls.signInEmail.errors?.['required']">
-        Email is required!
-      </small>
-      <small class="error block" *ngIf="signInForm.dirty && signInForm.controls.signInEmail.errors?.['pattern']">
-        Email does not match the usual pattern (name[at]domain.com)!
-      </small>
-    </fieldset>
-    <fieldset>
-      <label for="signInPass">Password</label>
-      <input formControlName="signInPass" name="signInPass" type="password" id="signInPass"
-             aria-describedby="signInHelp" placeholder="*********">
-      <small id="signInPassHelp" class="form-text text-muted block mt-6">
-        Minimum eight characters, at least one letter, one number and one special character!
-      </small>
-      <small class="error block" *ngIf="signInForm.dirty && signInForm.controls.signInPass.errors?.['required']">
-        Password is required!
-      </small>
-      <small class="error block" *ngIf="signInForm.dirty && signInForm.controls.signInPass.errors?.['pattern']">
-        Password does not match the required pattern!
-      </small>
-    </fieldset>
+    <app-user-pass-group componentKey={{formKey}} componentEmail={{formEmail}} componentPass={{formPass}} />
     <button type="submit" class="btn btn-primary" id="login-submit">Submit</button>
   </form>
 </div>
