@@ -1,9 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {REF} from '../../constants/list';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms'
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.component';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,9 +14,11 @@ import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.compone
   imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })
 export class SignInComponent {
-  formKey= 'signInUserPass';
-  formEmail= 'signInEmail';
-  formPass= 'signInPass';
+  router = inject(Router);
+  authService = inject(AuthService);
+  formKey = 'signInUserPass';
+  formEmail = 'signInEmail';
+  formPass = 'signInPass';
 
   signInForm = new FormGroup({});
 
@@ -27,5 +30,17 @@ export class SignInComponent {
     let signInEmail = form.get(this.formKey + REF + this.formEmail)?.value;
     let signInPass = form.get(this.formKey + REF + this.formPass)?.value;
     console.log('Email: ', signInEmail, ' - pass: ', signInPass);
+    let result!: boolean;
+    this.authService.login({email: signInEmail, password: signInPass})
+      .subscribe(
+        () => {
+          result = this.authService.isAuthenticated();
+          console.log('Subscription inner result: ', result);
+          if (result) {
+            this.router.navigate(['/']).then(() => console.log('Authenticated, redirecting to home...'));
+          } else {
+            this.router.navigate(['/signup']).then(() => console.log('Not authenticated, redirecting to signup...'));
+          }
+        })
   }
 }
