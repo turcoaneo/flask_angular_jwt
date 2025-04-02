@@ -22,6 +22,5 @@ export const appRoutes: Route[] = [
     path: 'signup',
     loadComponent: () =>
       import('./components/sign-up/sign-up.component').then((m) => m.SignUpComponent)
-
   },
 ];

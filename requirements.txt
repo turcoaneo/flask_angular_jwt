@@ -1,4 +1,6 @@
 flask
 flask_smorest
 flask_sqlalchemy
+sqlalchemy
 marshmallow
+bcrypt

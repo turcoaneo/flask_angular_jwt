@@ -19,7 +19,7 @@ docker run -p 3307:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e M
 ### enter docker mysql bash
 docker exec -it my-mysql /bin/bash
 
-mysql -h 127.0.0.1 -P 3306 -u root -p                   
+mysql -h 127.0.0.1 -P 3306 -u root -p
 Enter password: my-secret-pw
 ### switch to database name (mydb)
 USE mydb
