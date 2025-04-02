@@ -1,5 +1,12 @@
 <div class="mb-2">
+  <small class="error block" *ngIf="signUpTried">
+    Signup's been unsuccessful! Retry with different email and/or alias...
+  </small>
   <form [formGroup]="signUpForm" (ngSubmit)="formSubmit(signUpForm)">
+    <fieldset>
+      <label for="signUpAlias">Choose an alias</label>
+      <input formControlName="signUpAlias" name="signUpAlias" type="text" id="signUpAlias" placeholder="Enter alias">
+    </fieldset>
     <app-user-pass-group componentKey={{formKey}} componentEmail={{formEmail}} componentPass={{formPass}} />
     <fieldset>
       <label for="signUpConfirmPass">Confirm password</label>
@@ -8,7 +15,8 @@
              style="float: left" [type]="hide ? 'password' : 'text'"
              placeholder="Confirm password" aria-describedby="signUpConfirmHelp" onpaste="return false;"
              onDrag="return false" onDrop="return false" autocomplete="off">
-      <i [class]="hide ? 'bi bi-eye-slash' : 'bi bi-eye'" id="toggleConfirmPass" (click)="toggleConfirmPassInputView()"></i>
+      <i [class]="hide ? 'bi bi-eye-slash' : 'bi bi-eye'" id="toggleConfirmPass"
+         (click)="toggleConfirmPassInputView()"></i>
       </span>
       <small id="signUpConfirmPassHelp" class="form-text text-muted block mt-6">Re-type your password!</small>
       <small class="error block" *ngIf="signUpForm.controls.signUpConfirmPass.dirty &&

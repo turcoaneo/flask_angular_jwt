@@ -1,4 +1,7 @@
 <div class="mb-2">
+  <small class="error block" *ngIf="signInTried">
+    Authentication's been unsuccessful! Redirecting to sign-up page...
+  </small>
   <form [formGroup]="signInForm" (ngSubmit)="formSubmit(signInForm)">
     <app-user-pass-group componentKey={{formKey}} componentEmail={{formEmail}} componentPass={{formPass}} />
     <button type="submit" class="btn btn-primary" id="login-submit">Submit</button>
