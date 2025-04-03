@@ -8,12 +8,13 @@ import {Injectable} from '@angular/core';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  WEB_URL = 'http://127.0.0.1:5000';
   isLoggedIn: boolean = false;
   isUserRegistered: boolean = false;
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
     console.log('Auth Service Login: ', userDetails);
-    return this.http.post<any>('http://127.0.0.1:5000/login', userDetails)
+    return this.http.post<any>(this.WEB_URL + '/login', userDetails)
       .pipe(
         map(response => {
           localStorage.setItem('JWT_Token', response.token);
@@ -30,9 +31,9 @@ export class AuthService {
 
   signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {
     console.log('Auth Service Sign-up: ', userDetails);
-    return this.http.post<any>('http://127.0.0.1:5000/user', userDetails)
+    return this.http.post<any>(this.WEB_URL + '/user', userDetails)
       .pipe(
-        map(response => {
+        map(() => {
           this.isUserRegistered = true;
           return true;
         }),
