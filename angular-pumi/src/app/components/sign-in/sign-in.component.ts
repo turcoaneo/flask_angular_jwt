@@ -19,6 +19,7 @@ export class SignInComponent {
   formKey = 'signInUserPass';
   formEmail = 'signInEmail';
   formPass = 'signInPass';
+  signInTried = false;
 
   signInForm = new FormGroup({});
 
@@ -39,8 +40,13 @@ export class SignInComponent {
           if (result) {
             this.router.navigate(['/']).then(() => console.log('Authenticated, redirecting to home...'));
           } else {
-            this.router.navigate(['/signup']).then(() => console.log('Not authenticated, redirecting to signup...'));
+            this.signInTried = true;
+            setTimeout(() => {
+              console.log('sleep');
+              this.router.navigate(['/signup'])
+                .then(() => console.log('Not authenticated, redirecting to signup...'));
+            }, 2000);
           }
-        })
+        });
   }
 }

@@ -1,9 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {UserPassGroupComponent} from '../user-pass-group/user-pass-group.component';
 import {REF} from '../../constants/list';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,12 +14,19 @@ import {REF} from '../../constants/list';
   imports: [CommonModule, ReactiveFormsModule, RouterLink, UserPassGroupComponent]
 })
 export class SignUpComponent {
+  router = inject(Router);
+  authService = inject(AuthService);
   hide: boolean = true;
   formKey = 'signUpUserPass';
   formEmail = 'signUpEmail';
   formPass = 'signUpPass';
+  signUpTried = false;
+
   signUpForm = new FormGroup({
     signUpConfirmPass: new FormControl('', [
+      Validators.required,
+    ]),
+    signUpAlias: new FormControl('', [
       Validators.required,
     ]),
   });
@@ -34,10 +42,30 @@ export class SignUpComponent {
       console.log('Form not valid!');
       return;
     }
+    this.signUpTried = false;
     let signUpEmail = form.get(this.formKey + REF + this.formEmail)?.value;
     let signUpPass = form.get(this.formKey + REF + this.formPass)?.value;
     let signUpConfirmPass = form.controls['signUpConfirmPass'].value;
-    console.log('Email: ', signUpEmail, ' - pass: ', signUpPass, ' - confirm: ', signUpConfirmPass)
+    let alias = form.controls['signUpAlias'].value;
+    console.log('Email: ', signUpEmail, 'alias: ', alias, ' - pass: ', signUpPass, ' - confirm: ', signUpConfirmPass);
+    let result!: boolean;
+
+    this.authService.signUp({email: signUpEmail, alias: alias, password: signUpPass})
+      .subscribe(
+        () => {
+          result = this.authService.isUserCreated();
+          console.log('Subscription sign-up inner result: ', result);
+          if (result) {
+            this.router.navigate(['/signin']).then(() => console.log('Registered, redirecting to sign-in...'));
+          } else {
+            this.signUpTried = true;
+            setTimeout(() => {
+              console.log('sleep');
+              this.router.navigate(['/signup'])
+                .then(() => console.log('Not created, redirecting to signup...'));
+            }, 2000);
+          }
+        });
   }
 
   toggleConfirmPassInputView() {

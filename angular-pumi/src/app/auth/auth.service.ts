@@ -9,9 +9,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   isLoggedIn: boolean = false;
+  isUserRegistered: boolean = false;
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
-    console.log('Auth Service: ', userDetails);
+    console.log('Auth Service Login: ', userDetails);
     return this.http.post<any>('http://127.0.0.1:5000/login', userDetails)
       .pipe(
         map(response => {
@@ -27,6 +28,22 @@ export class AuthService {
       );
   }
 
+  signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {
+    console.log('Auth Service Sign-up: ', userDetails);
+    return this.http.post<any>('http://127.0.0.1:5000/user', userDetails)
+      .pipe(
+        map(response => {
+          this.isUserRegistered = true;
+          return true;
+        }),
+        catchError(error => {
+          console.log(error);
+          this.isUserRegistered = false;
+          return of(false);
+        })
+      );
+  }
+
   logout(): void {
     localStorage.removeItem('JWT_Token');
     this.isLoggedIn = false;
@@ -34,5 +51,9 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return this.isLoggedIn;
+  }
+
+  isUserCreated(): boolean {
+    return this.isUserRegistered;
   }
 }
