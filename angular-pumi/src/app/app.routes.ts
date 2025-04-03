@@ -19,6 +19,11 @@ export const appRoutes: Route[] = [
       import('./components/sign-in/sign-in.component').then((m) => m.SignInComponent)
   },
   {
+    path: 'logout',
+    loadComponent: () =>
+      import('./components/logout/logout.component').then((m) => m.LogoutComponent)
+  },
+  {
     path: 'signup',
     loadComponent: () =>
       import('./components/sign-up/sign-up.component').then((m) => m.SignUpComponent)
