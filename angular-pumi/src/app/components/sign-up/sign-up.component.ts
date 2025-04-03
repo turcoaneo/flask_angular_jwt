@@ -59,11 +59,11 @@ export class SignUpComponent {
             this.router.navigate(['/signin']).then(() => console.log('Registered, redirecting to sign-in...'));
           } else {
             this.signUpTried = true;
-          //   setTimeout(() => {
-          //     console.log('sleep');
-          //     this.router.navigate(['/signup'])
-          //       .then(() => console.log('Not created, redirecting to signup...'));
-          //   }, 2000);
+            setTimeout(() => {
+              console.log('sleep');
+              this.router.navigate(['/signup'])
+                .then(() => console.log('Not created, redirecting to signup...'));
+            }, 2000);
           }
         });
   }
