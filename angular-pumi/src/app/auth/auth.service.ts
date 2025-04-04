@@ -1,22 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import {catchError, map, Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {WEB_URL} from '../constants/list';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.webUrl = WEB_URL;
+    if (localStorage.getItem('JWT_Token')) {
+      this.isLoggedIn = true;
+    }
+  }
 
-  WEB_URL = 'http://127.0.0.1:5000';
+  webUrl!: string;
   isLoggedIn: boolean = false;
   isUserRegistered: boolean = false;
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
     console.log('Auth Service Login: ', userDetails);
-    return this.http.post<any>(this.WEB_URL + '/login', userDetails)
+    return this.http.post<any>(this.webUrl + '/login', userDetails)
       .pipe(
         map(response => {
+          console.log('Response token: ', response.token);
           localStorage.setItem('JWT_Token', response.token);
           this.isLoggedIn = true;
           return true;
@@ -31,7 +38,7 @@ export class AuthService {
 
   signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {
     console.log('Auth Service Sign-up: ', userDetails);
-    return this.http.post<any>(this.WEB_URL + '/user', userDetails)
+    return this.http.post<any>(this.webUrl + '/user', userDetails)
       .pipe(
         map(() => {
           this.isUserRegistered = true;

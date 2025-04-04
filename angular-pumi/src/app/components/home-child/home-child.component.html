@@ -1,1 +1,19 @@
-<p>home-child message from parent {{childMessage()}}</p>
+<p>Home-child paragraph -  message from parent: {{parentMessage()}}</p>
+<p>Home-child paragraph -  message from child: {{childMessage()}}</p>
+<p>Home users:</p>
+<ul>
+  @for (user of users(); track $index) {
+    <li class="mb-2 flex gap-4 items-center">
+      <span>{{user.email}} : {{user.alias}}</span>
+    </li>
+  }
+</ul>
+<p>Server users:</p>
+<ul>
+  @for (user of userList; track $index) {
+    <li class="mb-2 flex gap-4 items-center">
+      <span>{{user.email}} : {{user.alias}}</span>
+    </li>
+  }
+</ul>
+<p (click)="getUserByAlias('User')">User by alias: {{userByName}}</p>

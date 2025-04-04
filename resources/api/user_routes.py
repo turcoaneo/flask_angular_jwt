@@ -3,6 +3,7 @@ import logging
 from flask import current_app as f_app, make_response
 from flask import jsonify
 from flask.views import MethodView
+from flask_jwt_extended import create_access_token, jwt_required
 from flask_smorest import Blueprint
 from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
@@ -37,10 +38,12 @@ class UserLogin(MethodView):
 
                 user.updated = func.utc_timestamp()
                 db.session.commit()
-                json_result = user.as_dict()
+                access_token = create_access_token(identity=user.email)
+                json_result = make_response({'message': 'Login successful', 'token': access_token})
                 return json_result
 
         set_log_level(logging.INFO)
+        f_app.logger.error(f"Not authenticated for user {username} and pass {password}")
         return make_response({'error': '401 Unauthorized'}, 401)
 
 
@@ -66,7 +69,7 @@ class UserByName(MethodView):
 class UserListByName(MethodView):
     @blp.response(200, UserDTO(many=True))
     def get(self, user_name):
-        db_result = User.query.filter_by(name=user_name)
+        db_result = User.query.filter_by(alias=user_name)
         result = [r.as_dict() for r in db_result]
         return jsonify(result)
 
@@ -74,6 +77,7 @@ class UserListByName(MethodView):
 @blp.route('/user')
 class UserCRUD(MethodView):
     @blp.response(200, UserDTO(many=True))
+    @jwt_required()
     def get(self):
         db_result = db.session.query(User).all()
         result = [r.as_dict() for r in db_result]
