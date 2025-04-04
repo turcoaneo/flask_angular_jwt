@@ -19,11 +19,10 @@ export class AuthService {
   isUserRegistered: boolean = false;
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
-    console.log('Auth Service Login: ', userDetails);
+    console.log('Auth Service Login: ', userDetails.email);
     return this.http.post<any>(this.webUrl + '/login', userDetails)
       .pipe(
         map(response => {
-          console.log('Response token: ', response.token);
           localStorage.setItem('JWT_Token', response.token);
           this.isLoggedIn = true;
           return true;
@@ -37,7 +36,7 @@ export class AuthService {
   }
 
   signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {
-    console.log('Auth Service Sign-up: ', userDetails);
+    console.log('Auth Service Sign-up: ', userDetails.alias);
     return this.http.post<any>(this.webUrl + '/user', userDetails)
       .pipe(
         map(() => {
