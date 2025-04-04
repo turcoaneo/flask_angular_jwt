@@ -59,6 +59,7 @@ class UserById(MethodView):
 @blp.route('/user/name/<string:user_name>')
 class UserByName(MethodView):
     @blp.response(200, UserDTO)
+    @jwt_required()
     def get(self, user_name):
         db_result = get_user_by_alias(user_name)
         json_result = db_result.as_dict()
