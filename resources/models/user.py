@@ -43,6 +43,7 @@ class User(db.Model):
         password_hash = bcrypt.hashpw(byte_password, my_salt)
         if not bcrypt.checkpw(password_text.encode(utf_encoding), password_hash):
             raise AttributeError('Hashing not working for password!')
+        # noinspection PyTypeChecker
         self.password = password_hash.decode(utf_encoding)
 
     def authenticate(self, password):
