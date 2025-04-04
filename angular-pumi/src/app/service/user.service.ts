@@ -9,15 +9,17 @@ import {WEB_URL} from '../constants/list';
 })
 export class UserService {
   webUrl!: string;
+  userEndpoint!: string;
 
   constructor(private http: HttpClient) {
     this.webUrl = WEB_URL;
+    this.userEndpoint = this.webUrl + '/user';
   }
 
   getUsers(): Observable<User[]> {
     let users : UserDTO[] = [];
     console.log('User Service - get users: ');
-    return this.http.get<UserDTO[]>(this.webUrl + '/user')
+    return this.http.get<UserDTO[]>(this.userEndpoint)
       .pipe(
         map(items => {
           items.map(item => {
@@ -33,8 +35,7 @@ export class UserService {
   }
 
   getUserByAlias(alias: string): Observable<User> {
-    console.log('User Service - get user by alias: ');
-    return this.http.get<UserDTO>(this.webUrl + '/user/' + alias)
+    return this.http.get<UserDTO>(this.userEndpoint + '/name/' + alias)
       .pipe(
         map(response => {
           return new UserDTO(response.email, response.alias);

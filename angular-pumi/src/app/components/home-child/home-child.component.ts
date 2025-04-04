@@ -13,7 +13,8 @@ import {UserService} from '../../service/user.service';
 export class HomeChildComponent {
   userService = inject(UserService);
   userList!: UserDTO[];
-  userByName!: UserDTO;
+  alias!: string;
+  email!: string;
   parentMessage = input("External message");
   childMessage = input("Child message");
   users = signal<User[]>([
@@ -36,7 +37,8 @@ export class HomeChildComponent {
   getUserByAlias(alias: string){
     this.userService.getUserByAlias(alias).subscribe(
       result => {
-        this.userByName = new UserDTO(result.email, result.alias);
+        this.alias = result.alias;
+        this.email = result.email;
       }
     )
   }
