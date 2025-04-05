@@ -67,7 +67,7 @@ export class HomeComponent {
       this.homeMessage.set(initialValue);
       this.isToExpire = false;
       console.log('Token refresh: ', localStorage.getItem(JWT_TOKEN_KEY));
-      this.authService.refreshJwtToken({email: 'user@admin.ro'}).subscribe(() => {
+      this.authService.refreshJwtToken().subscribe(() => {
         console.log('Token refresh: ', localStorage.getItem(JWT_TOKEN_KEY));
         this.timeout = this.authService.jwt_expiration_seconds * 1000;
         this.setSessionTimeout();

@@ -51,15 +51,14 @@ class UserLogin(MethodView):
 
 @blp.route('/token')
 class UserToken(MethodView):
-    @blp.arguments(UserMicroDTO)
     @blp.response(200, UserDTO)
     @jwt_required()
-    def post(self, user_dto):
-        email = user_dto['email']
+    def get(self):
         set_log_level(logging.DEBUG)
         token = request.headers['Authorization'].split(None, 1)[1].strip()
         token_payload = decode_token(token)
         f_app.logger.debug(f'Refreshing token for: {token_payload}')
+        email = token_payload['sub']
         user = User.query.filter(User.email == email).first()
 
         if user:
