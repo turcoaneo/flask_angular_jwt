@@ -15,18 +15,19 @@ export class HomeChildComponent {
   userList!: UserDTO[];
   alias!: string;
   email!: string;
+  clicked: boolean = false;
   parentMessage = input("External message");
   childMessage = input("Child message");
   users = signal<User[]>([
     {email: 'q1@email.ro', alias: 'Alias-q1'},
-    {email: 'user@email.ro', alias: 'User'},
+    {email: 'admin@email.ro', alias: 'Admin'},
   ]);
 
   constructor() {
     this.getUsers();
   }
 
-  getUsers(){
+  getUsers() {
     this.userService.getUsers().subscribe(
       result => {
         this.userList = result;
@@ -34,12 +35,19 @@ export class HomeChildComponent {
     )
   }
 
-  getUserByAlias(alias: string){
-    this.userService.getUserByAlias(alias).subscribe(
-      result => {
-        this.alias = result.alias;
-        this.email = result.email;
-      }
-    )
+  getUserByAlias(alias: string) {
+    if (this.clicked) {
+      let index = Math.floor(Math.random() * 2);
+      this.alias = this.users()[index].alias;
+      this.email = this.users()[index].email;
+    } else {
+      this.userService.getUserByAlias(alias).subscribe(
+        result => {
+          this.alias = result.alias;
+          this.email = result.email;
+        }
+      )
+    }
+    this.clicked = !this.clicked;
   }
 }

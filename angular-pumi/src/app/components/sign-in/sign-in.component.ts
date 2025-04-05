@@ -30,19 +30,16 @@ export class SignInComponent {
     }
     let signInEmail = form.get(this.formKey + REF + this.formEmail)?.value;
     let signInPass = form.get(this.formKey + REF + this.formPass)?.value;
-    console.log('Email: ', signInEmail, ' - pass: ', signInPass);
     let result!: boolean;
     this.authService.login({email: signInEmail, password: signInPass})
       .subscribe(
         () => {
           result = this.authService.isAuthenticated();
-          console.log('Subscription inner result: ', result);
           if (result) {
             this.router.navigate(['/']).then(() => console.log('Authenticated, redirecting to home...'));
           } else {
             this.signInTried = true;
             setTimeout(() => {
-              console.log('sleep');
               this.router.navigate(['/signup'])
                 .then(() => console.log('Not authenticated, redirecting to signup...'));
             }, 2000);

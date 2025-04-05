@@ -9,7 +9,7 @@ from resources.utils.db_utils import db
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.logger.setLevel(logging.INFO)
 
-app.config["JWT_SECRET_KEY"] = 'your_jwt_secret_key'
+app.config["JWT_SECRET_KEY"] = 'my_jwt_secret_key'
 app.config['JWT_TOKEN_LOCATION'] = ['headers']
 # JWT Initialization
 jwt = JWTManager(app)

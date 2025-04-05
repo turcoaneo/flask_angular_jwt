@@ -15,7 +15,6 @@ export class LogoutComponent {
   constructor() {
     this.authService.logout();
     setTimeout(() => {
-      console.log('sleep');
       this.router.navigate(['/signin'])
         .then(() => console.log('Logged out, redirecting to signin...'));
     }, 1000);

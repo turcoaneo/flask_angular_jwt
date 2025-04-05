@@ -60,7 +60,6 @@ export class SignUpComponent {
           } else {
             this.signUpTried = true;
             setTimeout(() => {
-              console.log('sleep');
               this.router.navigate(['/signup'])
                 .then(() => console.log('Not created, redirecting to signup...'));
             }, 2000);
