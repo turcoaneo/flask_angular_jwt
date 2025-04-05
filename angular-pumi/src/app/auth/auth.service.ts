@@ -19,9 +19,9 @@ export class AuthService {
   isUserRegistered: boolean = false;
   jwt_expiration_seconds = 3600;
 
-  refreshJwtToken(userDetails: {email: string}): Observable<boolean> {
-    console.log('Auth Service refreshing token: ', userDetails);
-    return this.http.post<any>(this.webUrl + '/token', userDetails)
+  refreshJwtToken(): Observable<boolean> {
+    console.log('Auth Service refreshing token.');
+    return this.http.get<any>(this.webUrl + '/token')
       .pipe(
         map(response => {
           let token_duration_minutes = response['expires_minutes'];
