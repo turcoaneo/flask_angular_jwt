@@ -14,3 +14,7 @@ class UserDTO(Schema):
 class UserMiniDTO(Schema):
     email = fields.Str(required=True)
     password = fields.Str(required=True)
+
+
+class UserMicroDTO(Schema):
+    email = fields.Str(required=True)

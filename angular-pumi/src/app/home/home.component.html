@@ -1,3 +1,4 @@
-<h2>Home page</h2>
+<h2>Home page: {{homeMessage()}}</h2>
+<span *ngIf="isToExpire" (click)="resetSessionTimeout()">Extend session</span>
 <!--suppress AngularUndefinedBinding -->
 <app-home-child [parentMessage]="homeMessage()"/>
