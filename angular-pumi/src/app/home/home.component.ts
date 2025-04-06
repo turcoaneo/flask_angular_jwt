@@ -66,9 +66,12 @@ export class HomeComponent {
       this.timeoutId = -1;
       this.homeMessage.set(initialValue);
       this.isToExpire = false;
-      console.log('Token refresh: ', localStorage.getItem(JWT_TOKEN_KEY));
+      let oldToken: string | undefined = sessionStorage.getItem(JWT_TOKEN_KEY)?.toString();
       this.authService.refreshJwtToken().subscribe(() => {
-        console.log('Token refresh: ', localStorage.getItem(JWT_TOKEN_KEY));
+        let newToken: string | undefined = sessionStorage.getItem(JWT_TOKEN_KEY)?.toString();
+        if (oldToken === newToken) {
+          throw new Error('Token not refreshed!');
+        }
         this.timeout = this.authService.jwt_expiration_seconds * 1000;
         this.setSessionTimeout();
         this.prepareToExtendSession();

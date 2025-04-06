@@ -1,0 +1,7 @@
+p span {
+  cursor: pointer;
+  color: blue;
+  &:hover {
+    color: #999;
+  }
+}

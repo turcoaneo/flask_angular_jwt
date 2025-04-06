@@ -1,4 +1,3 @@
-import logging
 import os
 from datetime import timedelta
 
@@ -10,7 +9,7 @@ from flask_smorest import Blueprint
 from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
 
-from resources.dto.user_dto import UserDTO, UserMiniDTO, UserMicroDTO
+from resources.dto.user_dto import UserDTO, UserMiniDTO
 from resources.models.user import User
 from resources.utils.db_utils import db
 
@@ -18,59 +17,48 @@ exp_minutes = os.getenv('JWT_EXPIRATION_MINUTES', 60)
 blp = Blueprint('User', "users", description="Operation with users")
 
 
-def set_log_level(level: logging):
-    f_app.logger.setLevel(level)
-
-
 @blp.route('/login')
 class UserLogin(MethodView):
     @blp.arguments(UserMiniDTO)
-    @blp.response(200, UserDTO)
+    @blp.response(200)
     def post(self, user_dto):
         username = user_dto['email']
         password = user_dto['password']
 
         user = User.query.filter(User.email == username).first()
-        set_log_level(logging.DEBUG)
 
         if user:
             if user.authenticate(password):
                 user_alias = user.alias
-                f_app.logger.debug(f'Authenticated: {user_alias}')
+                f_app.logger.info(f'Authenticated: {user_alias}')
 
                 user.updated = func.utc_timestamp()
                 db.session.commit()
                 json_result = make_response_jwt_token(username)
-                set_log_level(logging.INFO)
                 return json_result
 
-        set_log_level(logging.INFO)
         f_app.logger.error(f"Not authenticated for user {username} and pass {password}")
         return make_response({'error': '401 Unauthorized'}, 401)
 
 
 @blp.route('/token')
 class UserToken(MethodView):
-    @blp.response(200, UserDTO)
+    @blp.response(200)
     @jwt_required()
     def get(self):
-        set_log_level(logging.DEBUG)
         token = request.headers['Authorization'].split(None, 1)[1].strip()
         token_payload = decode_token(token)
-        f_app.logger.debug(f'Refreshing token for: {token_payload}')
         email = token_payload['sub']
         user = User.query.filter(User.email == email).first()
 
         if user:
-            f_app.logger.debug(f'Refreshing token for: {email}')
+            f_app.logger.info(f'Refreshing token for: {email}')
 
             user.updated = func.utc_timestamp()
             db.session.commit()
             json_result = make_response_jwt_token(email)
-            set_log_level(logging.INFO)
             return json_result
 
-        set_log_level(logging.INFO)
         f_app.logger.error(f"Not refreshed for user {email}")
         return make_response({'error': '401 Unauthorized'}, 401)
 
