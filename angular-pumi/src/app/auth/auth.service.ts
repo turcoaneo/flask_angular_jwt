@@ -9,7 +9,7 @@ import {JWT_TOKEN_KEY, WEB_URL} from '../constants/list';
 export class AuthService {
   constructor(private http: HttpClient) {
     this.webUrl = WEB_URL;
-    if (localStorage.getItem(JWT_TOKEN_KEY)) {
+    if (sessionStorage.getItem(JWT_TOKEN_KEY)) {
       this.isLoggedIn = true;
     }
   }
@@ -26,8 +26,8 @@ export class AuthService {
         map(response => {
           let token_duration_minutes = response['expires_minutes'];
           this.jwt_expiration_seconds = token_duration_minutes * 60;
-          localStorage.removeItem(JWT_TOKEN_KEY);
-          localStorage.setItem(JWT_TOKEN_KEY, response.token);
+          sessionStorage.removeItem(JWT_TOKEN_KEY);
+          sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
           this.isLoggedIn = true;
           return true;
         }),
@@ -47,7 +47,7 @@ export class AuthService {
           let token_duration_minutes = response['expires_minutes'];
           this.jwt_expiration_seconds = token_duration_minutes * 60;
           console.log('this.jwt_expiration_seconds :', this.jwt_expiration_seconds);
-          localStorage.setItem(JWT_TOKEN_KEY, response.token);
+          sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
           this.isLoggedIn = true;
           return true;
         }),
@@ -76,7 +76,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(JWT_TOKEN_KEY);
+    sessionStorage.removeItem(JWT_TOKEN_KEY);
     this.isLoggedIn = false;
   }
 

@@ -66,9 +66,9 @@ export class HomeComponent {
       this.timeoutId = -1;
       this.homeMessage.set(initialValue);
       this.isToExpire = false;
-      let oldToken: string | undefined = localStorage.getItem(JWT_TOKEN_KEY)?.toString();
+      let oldToken: string | undefined = sessionStorage.getItem(JWT_TOKEN_KEY)?.toString();
       this.authService.refreshJwtToken().subscribe(() => {
-        let newToken: string | undefined = localStorage.getItem(JWT_TOKEN_KEY)?.toString();
+        let newToken: string | undefined = sessionStorage.getItem(JWT_TOKEN_KEY)?.toString();
         if (oldToken === newToken) {
           throw new Error('Token not refreshed!');
         }
