@@ -35,16 +35,16 @@ export class HomeChildComponent {
     )
   }
 
-  getUserByAlias(alias: string) {
+  getUserByAlias() {
+    let index = Math.floor(Math.random() * 2);
     if (this.clicked) {
-      let index = Math.floor(Math.random() * 2);
       this.alias = this.users()[index].alias;
       this.email = this.users()[index].email;
     } else {
-      this.userService.getUserByAlias(alias).subscribe(
+      this.userService.getUsers().subscribe(
         result => {
-          this.alias = result.alias;
-          this.email = result.email;
+          this.alias = result[index].alias;
+          this.email = result[index].email;
         }
       )
     }

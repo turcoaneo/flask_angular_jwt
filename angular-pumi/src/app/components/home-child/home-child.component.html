@@ -1,3 +1,4 @@
+<!--suppress JSUnresolvedReference -->
 <p>Home-child paragraph -  message from parent: {{parentMessage()}}</p>
 <p>Home-child paragraph -  message from child: {{childMessage()}}</p>
 <p>Home users:</p>
@@ -16,4 +17,4 @@
     </li>
   }
 </ul>
-<p (click)="getUserByAlias('User')">User by alias: {{alias}}, with email: {{email}}</p>
+<p><span (click)="getUserByAlias()">User (click for random):</span> {{alias}}, with email: {{email}}</p>
