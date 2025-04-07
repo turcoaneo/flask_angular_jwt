@@ -18,8 +18,19 @@ ng g c components/header
 docker run -p 3307:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=mydb -d mysql:latest
 ### enter docker mysql bash
 docker exec -it my-mysql /bin/bash
+### check version
+docker exec my-mysql bash -c "mysql -V" or docker inspect mysql | grep MYSQL_
 
 mysql -h 127.0.0.1 -P 3306 -u root -p
 Enter password: my-secret-pw
 ### switch to database name (mydb)
 USE mydb
+
+## aws
+aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 509399624827.dkr.ecr.eu-north-1.amazonaws.com
+
+docker build -t pumi-repo .
+docker tag pumi-repo:latest 509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo:latest
+docker push 509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo:latest
+
+aws ecs update-service --cluster cluster-pumi --service service-pumi --force-new-deployment > app/resources/sample_update_service.json
