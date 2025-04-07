@@ -5,3 +5,5 @@ sqlalchemy
 marshmallow
 bcrypt
 flask_jwt_extended
+gunicorn
+mysql-connector-python
