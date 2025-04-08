@@ -7,7 +7,7 @@ import {NgIf} from '@angular/common';
   selector: 'app-header',
   imports: [
     RouterLink,
-    NgIf
+    NgIf,
   ],
   templateUrl: './header.component.html',
   standalone: true,

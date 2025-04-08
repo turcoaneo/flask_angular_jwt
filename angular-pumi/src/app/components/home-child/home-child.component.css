@@ -1,7 +1,9 @@
-p span {
+#user-click {
   cursor: pointer;
   color: blue;
   &:hover {
     color: #999;
   }
 }
+
+

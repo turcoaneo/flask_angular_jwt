@@ -1,10 +1,13 @@
 import {Component, inject, input, signal} from '@angular/core';
 import {User, UserDTO} from '../../model/user.model';
 import {UserService} from '../../service/user.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-home-child',
-  imports: [],
+  imports: [
+    NgIf
+  ],
   templateUrl: './home-child.component.html',
   standalone: true,
   styleUrl: './home-child.component.css',
@@ -17,10 +20,10 @@ export class HomeChildComponent {
   email!: string;
   clicked: boolean = false;
   parentMessage = input("External message");
-  childMessage = input("Child message");
+  localMessage = input("Inner message");
   users = signal<User[]>([
-    {email: 'q1@email.ro', alias: 'Alias-q1'},
-    {email: 'admin@email.ro', alias: 'Admin'},
+    {email: 'q1@local.ro', alias: 'Alias-q1'},
+    {email: 'admin@local.ro', alias: 'Admin'},
   ]);
 
   constructor() {
