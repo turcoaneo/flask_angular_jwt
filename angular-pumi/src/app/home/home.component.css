@@ -1,10 +1,9 @@
 h2 #ext {
   padding-left: 12px;
-  padding-top: -4px;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bolder;
   cursor: pointer;
-  color: lightgray;
+  color: lightseagreen;
   &:hover {
     color: #666;
   }
@@ -16,4 +15,9 @@ h2 {
   font-size: 24px;
   color: #fff;
   background-color: #333;
+}
+
+.warning-color {
+  text-align: right;
+  color: indianred;
 }
