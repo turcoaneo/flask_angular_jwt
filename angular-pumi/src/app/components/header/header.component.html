@@ -1,12 +1,20 @@
 <header>
   <nav>
     <span routerLink="/home"><h1>Pumi app</h1></span>
+    <ul>
+      <li routerLink="/about">
+        <h2>About</h2>
+      </li>
+      <li routerLink="/contact">
+        <h2>Contact</h2>
+      </li>
+    </ul>
     <span routerLink="/logout" *ngIf="authService.isAuthenticated()"><h2>Logout</h2></span>
     <ul *ngIf="!authService.isAuthenticated()">
       <li routerLink="/signin">
         <h2>Sign in</h2>
       </li>
-      <li class="header-link" routerLink="/signup">
+      <li routerLink="/signup">
         <h2>Sign up</h2>
       </li>
     </ul>

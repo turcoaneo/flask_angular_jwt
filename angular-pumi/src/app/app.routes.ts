@@ -5,7 +5,17 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
+    redirectTo: 'about',
+  },
+  {
+    path: 'about',
+    loadComponent: () =>
+      import('./components/about/about.component').then((m) => m.AboutComponent)
+  },
+  {
+    path: 'contact',
+    loadComponent: () =>
+      import('./components/contact/contact.component').then((m) => m.ContactComponent)
   },
   {
     path: 'home',
