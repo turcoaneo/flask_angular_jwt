@@ -1,0 +1,17 @@
+div {
+  display: block;
+  text-align: center;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+button {
+  width: 25%;
+}
