@@ -1,9 +1,18 @@
-h2 span {
-  padding-left: 6px;
-  font-size: 16px;
+h2 #ext {
+  padding-left: 12px;
+  padding-top: -4px;
+  font-size: 20px;
   cursor: pointer;
-  color: blue;
+  color: lightgray;
   &:hover {
-    color: #999;
+    color: #666;
   }
+}
+
+h2 {
+  text-align: right;
+  padding-right: 12px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #333;
 }
