@@ -21,3 +21,32 @@ h2 {
   text-align: right;
   color: indianred;
 }
+
+/* Tooltip class on parent, the span/div to be moused over */
+.my-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text class on child, following parent text, tooltip itself */
+.my-tooltip .my-tooltiptext {
+  font-size: 16px;
+  visibility: hidden;
+  bottom: 100%;
+  left: 50%;
+  width: 60px;
+  margin-left: -30px; /* Use half of the width to center the tooltip */
+  background-color: #333;
+  color: lightseagreen;
+  text-align: center;
+  padding: 4px;
+  border-radius: 4px;
+
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.my-tooltip:hover .my-tooltiptext {
+  visibility: visible;
+}
