@@ -1,5 +1,5 @@
-use dev_db;
+use uat_db;
 
-DROP TABLE dev_db.user_account;
+DROP TABLE uat_db.user_account;
 
-drop database dev_db;
+drop database uat_db;
