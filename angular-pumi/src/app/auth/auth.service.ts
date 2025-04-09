@@ -20,15 +20,13 @@ export class AuthService {
   jwt_expiration_seconds = 3600;
 
   refreshJwtToken(): Observable<boolean> {
-    console.log('Auth Service refreshing token.');
+    let action:string = 'refreshing';
+    console.log('Auth Service ' + action + ' token.');
     return this.http.get<any>(this.webUrl + '/token')
       .pipe(
         map(response => {
-          let token_duration_minutes = response['expires_minutes'];
-          this.jwt_expiration_seconds = token_duration_minutes * 60;
           sessionStorage.removeItem(JWT_TOKEN_KEY);
-          sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
-          this.isLoggedIn = true;
+          this.extracted(response, action);
           return true;
         }),
         catchError(error => {
@@ -44,11 +42,7 @@ export class AuthService {
     return this.http.post<any>(this.webUrl + '/login', userDetails)
       .pipe(
         map(response => {
-          let token_duration_minutes = response['expires_minutes'];
-          this.jwt_expiration_seconds = token_duration_minutes * 60;
-          console.log('this.jwt_expiration_seconds :', this.jwt_expiration_seconds);
-          sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
-          this.isLoggedIn = true;
+          this.extracted(response, 'login');
           return true;
         }),
         catchError(error => {
@@ -57,6 +51,14 @@ export class AuthService {
           return of(false);
         })
       );
+  }
+
+  private extracted(response: any, action: string) {
+    let token_duration_minutes = response['expires_minutes'];
+    this.jwt_expiration_seconds = token_duration_minutes * 60;
+    console.log(action , 'jwt expiration seconds:', this.jwt_expiration_seconds);
+    sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
+    this.isLoggedIn = true;
   }
 
   signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {

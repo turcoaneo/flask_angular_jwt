@@ -2,15 +2,15 @@ import {Component, inject, signal} from '@angular/core';
 import {HomeChildComponent} from '../components/home-child/home-child.component';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
-import {NgIf} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 import {JWT_TOKEN_KEY} from '../constants/list';
 
 let initialValue = 'Session in progress';
-let expireValue = 'Session will expire in seconds';
+let expireValue = 'Session expiring soon';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeChildComponent, NgIf],
+  imports: [HomeChildComponent, NgIf, NgClass],
   templateUrl: './home.component.html',
   standalone: true,
   styleUrl: './home.component.css'

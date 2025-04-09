@@ -1,4 +1,8 @@
-<h2>{{homeMessage()}}<span *ngIf="isToExpire" id="ext" (click)="resetSessionTimeout()">=></span></h2>
+<h2 [ngClass]="{'warning-color': isToExpire}"> {{ homeMessage() }}
+  <span class="my-tooltip" *ngIf="isToExpire" id="ext" (click)="resetSessionTimeout()">=>
+    <span class="my-tooltiptext">Extend</span>
+  </span>
+</h2>
 
 <!--suppress AngularUndefinedBinding -->
 <app-home-child [parentMessage]="homeMessage()"/>
