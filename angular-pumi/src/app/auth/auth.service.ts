@@ -1,15 +1,16 @@
 import {HttpClient} from '@angular/common/http';
 import {catchError, map, Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {JWT_TOKEN_KEY, STATIC_AUTH, WEB_URL} from '../constants/list';
+import {JWT_TOKEN_KEY} from '../constants/list';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {
-    this.webUrl = WEB_URL;
-    if (sessionStorage.getItem(JWT_TOKEN_KEY) || STATIC_AUTH) {
+    this.webUrl = environment.domain;
+    if (sessionStorage.getItem(JWT_TOKEN_KEY)) {
       this.isLoggedIn = true;
     }
   }

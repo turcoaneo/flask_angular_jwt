@@ -1,4 +1,4 @@
-# flask_angular_sqlalchemy
+# pumi app: angular flask sqlalchemy mysql
 Integrating angular with python and sqlalchemy for mysql docker container
 ## install
 python -m venv venv
@@ -13,6 +13,9 @@ npm cache clean --force
 npm install
 ng generate component home
 ng g c components/header
+### ng create ENVs
+cd angular-pumi
+ng g environments for ng generate environments
 
 ## docker - mysql
 docker run -p 3307:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=mydb -d mysql:latest

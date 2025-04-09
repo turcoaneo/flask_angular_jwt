@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {catchError, map, Observable, of} from 'rxjs';
 import {User, UserDTO} from '../model/user.model';
 import {HttpClient} from '@angular/common/http';
-import {WEB_URL} from '../constants/list';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class UserService {
   userEndpoint!: string;
 
   constructor(private http: HttpClient) {
-    this.webUrl = WEB_URL;
+    this.webUrl = environment.domain;
     this.userEndpoint = this.webUrl + '/user';
   }
 

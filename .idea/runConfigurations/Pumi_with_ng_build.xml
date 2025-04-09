@@ -7,6 +7,7 @@
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
       <env name="DATABASE_PW" value="my-secret-pw" />
+      <env name="ENVIRONMENT" value="dev" />
     </envs>
     <option name="SDK_HOME" value="" />
     <option name="SDK_NAME" value="Python 3.11" />

@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 #ENV DATABASE_URL='cluster-db-aurora-instance-1.cn48a44e27uj.eu-north-1.rds.amazonaws.com'
 #ENV DATABASE_URL='mysql-community-db.cn48a44e27uj.eu-north-1.rds.amazonaws.com'
 #ENV DATABASE_PORT='3306'
-#ENV DATABASE_NAME='dev_db'
+#ENV DATABASE_NAME='uat_db'
 #ENV DATABASE_USER='admin'
 #ENV DATABASE_PW='Sky_Auro#*75'
 COPY . .
