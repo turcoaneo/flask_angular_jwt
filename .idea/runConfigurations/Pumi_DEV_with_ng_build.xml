@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Pumi with ng build" type="PythonConfigurationType" factoryName="Python">
+  <configuration default="false" name="Pumi DEV with ng build" type="PythonConfigurationType" factoryName="Python">
     <module name="pumi" />
     <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
@@ -41,7 +41,7 @@
     <option name="REDIRECT_INPUT" value="false" />
     <option name="INPUT_FILE" value="" />
     <method v="2">
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="build-dev" run_configuration_type="PythonConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build DEV FE" run_configuration_type="PythonConfigurationType" />
     </method>
   </configuration>
 </component>
