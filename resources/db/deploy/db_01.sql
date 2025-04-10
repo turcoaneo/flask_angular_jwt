@@ -1,6 +1,3 @@
-CREATE DATABASE uat_db;
-use uat_db;
-
 CREATE TABLE user_account (
                               id int NOT NULL AUTO_INCREMENT,
                               alias varchar(30) UNIQUE,

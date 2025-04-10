@@ -13,8 +13,9 @@ from resources.dto.user_dto import UserDTO, UserMiniDTO
 from resources.models.user import User
 from resources.utils.db_utils import db
 
-exp_minutes = os.getenv('JWT_EXPIRATION_MINUTES', 60)
 blp = Blueprint('User', "users", description="Operation with users")
+
+
 
 
 @blp.route('/login')
@@ -37,7 +38,8 @@ class UserLogin(MethodView):
                 json_result = make_response_jwt_token(username)
                 return json_result
 
-        f_app.logger.error(f"Not authenticated for user {username} and pass {password}")
+        password_display = password[:2] + '...' + password[-2:]
+        f_app.logger.error(f"Not authenticated for user {username} and pass {password_display}")
         return make_response({'error': '401 Unauthorized'}, 401)
 
 
@@ -120,6 +122,7 @@ class UserListByName(MethodView):
 
 
 def make_response_jwt_token(email):
+    exp_minutes = os.getenv('JWT_EXPIRATION_MINUTES')
     exp_time = timedelta(minutes=int(exp_minutes))
     access_token = create_access_token(identity=email, expires_delta=exp_time)
     f_app.logger.debug(access_token)
