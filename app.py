@@ -2,7 +2,6 @@ import logging
 import os
 
 from flask import Flask, render_template
-from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
 from resources.api.user_routes import blp
@@ -18,6 +17,7 @@ jwt = JWTManager(app)
 
 env = os.getenv('ENVIRONMENT')
 if env == 'dev':
+    from flask_cors import CORS
     CORS(app)
 
 config_dir = './resources/config/'
