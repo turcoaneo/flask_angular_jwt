@@ -16,6 +16,7 @@ from resources.utils.db_utils import db
 blp = Blueprint('User', "users", description="Operation with users")
 
 
+exp_minutes = os.getenv('JWT_EXPIRATION_MINUTES')
 
 
 @blp.route('/login')
@@ -122,7 +123,6 @@ class UserListByName(MethodView):
 
 
 def make_response_jwt_token(email):
-    exp_minutes = os.getenv('JWT_EXPIRATION_MINUTES')
     exp_time = timedelta(minutes=int(exp_minutes))
     access_token = create_access_token(identity=email, expires_delta=exp_time)
     f_app.logger.debug(access_token)
