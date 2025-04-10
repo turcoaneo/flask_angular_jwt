@@ -11,7 +11,8 @@ DIST_PATH = os.path.join(ANGULAR_PROJECT_PATH, 'dist', directory, 'browser')
 FLASK_STATIC_PATH = os.path.join(CURRENT_DIRECTORY, 'static')
 FLASK_TEMPLATES_PATH = os.path.join(CURRENT_DIRECTORY, 'templates')
 
-subprocess.call(('cd ' + ANGULAR_PROJECT_PATH + ' && ng build --base-href /static/'), shell=True)
+env = os.getenv('ENVIRONMENT', 'uat')
+subprocess.call(('cd ' + ANGULAR_PROJECT_PATH + ' && ng build -c ' + env + ' --base-href /static/'), shell=True)
 
 
 def move_built_files(path, extension):
