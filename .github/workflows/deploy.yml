@@ -58,6 +58,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push image to Amazon ECR
+        uses: EndBug/latest-tag@latest
         with:
           ref: latest
         id: build-image
