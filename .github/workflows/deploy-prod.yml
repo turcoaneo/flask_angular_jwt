@@ -19,7 +19,7 @@ jobs:
       AWS_ECS_CLUSTER_NAME: cluster-pumi
       AWS_ECR_CONTAINER_NAME: container-prod-pumi
 
-    if: github.ref != 'refs/heads/deployment-fe-prod'
+    if: github.ref == 'refs/heads/deployment-fe-prod'
 
     steps:
       - name: Checkout
