@@ -73,4 +73,4 @@ jobs:
 
       - name: Revert build NG for uat
         run:
-          ENVIRONMENT=dev && python -m build_env $ENVIRONMENT
+          ENVIRONMENT= && python -m build_env $ENVIRONMENT
