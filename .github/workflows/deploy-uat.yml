@@ -11,6 +11,7 @@ name: Deploy UAT to Amazon ECS
 jobs:
   deploy:
     name: Deploy
+    if: github.ref == 'ref/heads/deployment-fe-uat'
     runs-on: ubuntu-latest
     env:
       AWS_DEFAULT_REGION: eu-north-1
@@ -20,12 +21,6 @@ jobs:
       AWS_ECR_CONTAINER_NAME: container-uat-pumi
 
     steps:
-      - name: Exit if the branch is not main
-        if: github.ref == 'refs/heads/deployment-fe-prod'
-        run: |
-          echo "Branch is not main or deployment-fe-uat, exiting."
-          exit 0
-
       - name: Checkout
         uses: actions/checkout@v2
 

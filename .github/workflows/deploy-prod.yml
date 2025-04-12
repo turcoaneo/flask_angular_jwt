@@ -11,6 +11,7 @@ name: Deploy PROD to Amazon ECS
 jobs:
   deploy:
     name: Deploy
+    if: github.ref == 'refs/heads/deployment-fe-prod'
     runs-on: ubuntu-latest
     env:
       AWS_DEFAULT_REGION: eu-north-1
@@ -20,12 +21,6 @@ jobs:
       AWS_ECR_CONTAINER_NAME: container-prod-pumi
 
     steps:
-      - name: Exit if the branch is not prod
-        if: github.ref != 'refs/heads/deployment-fe-prod'
-        run: |
-          echo "Branch is not deployment-fe-prod, exiting."
-          exit 0
-
       - name: Checkout
         uses: actions/checkout@v2
 
