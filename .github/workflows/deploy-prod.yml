@@ -19,6 +19,8 @@ jobs:
       AWS_ECS_CLUSTER_NAME: cluster-pumi
       AWS_ECR_CONTAINER_NAME: container-prod-pumi
 
+    if: github.ref == 'refs/heads/main'
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
