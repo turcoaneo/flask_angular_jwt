@@ -13,7 +13,10 @@ FLASK_TEMPLATES_PATH = os.path.join(CURRENT_DIRECTORY, 'templates')
 
 env = os.getenv('ENVIRONMENT', ' ')
 if env != ' ':
+    print(f'ENVIRONMENT: {env}')
     env = f' -c {env} '
+else:
+    print(f'ENVIRONMENT: prod')
 command_build = f' && ng build{env}--base-href /static/'
 subprocess.call(('cd ' + ANGULAR_PROJECT_PATH + command_build), shell=True)
 
