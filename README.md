@@ -37,3 +37,11 @@ docker tag pumi-repo:latest 509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-r
 docker push 509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo:latest
 
 aws ecs update-service --cluster cluster-pumi --service service-pumi --force-new-deployment > app/resources/sample_update_service.json
+
+## Github CLI
+### UAT
+gh workflow run "Deploy UAT to Amazon ECS" --ref deployment-fe-uat
+gh run list --workflow=deploy-uat.yml
+# PROD
+gh workflow run "Deploy PROD to Amazon ECS" --ref deployment-fe-prod
+gh run list --workflow=deploy-prod.yml
