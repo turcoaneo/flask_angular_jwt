@@ -1,3 +1,3 @@
 export const environment = {
-  domain: 'https://pumiapp.com',
+  domain: 'http://13.50.155.81:80',
 };
