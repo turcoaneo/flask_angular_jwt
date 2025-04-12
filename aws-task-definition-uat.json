@@ -1,13 +1,13 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:eu-north-1:509399624827:task-definition/task-pumi-uat:2",
+  "taskDefinitionArn": "arn:aws:ecs:eu-north-1:509399624827:task-definition/task-def-uat-pumi:1",
   "containerDefinitions": [
     {
-      "name": "container-pumi-app",
-      "image": "509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo",
+      "name": "container-uat-pumi",
+      "image": "509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo-uat",
       "cpu": 0,
       "portMappings": [
         {
-          "name": "port-80",
+          "name": "port-80-uat",
           "containerPort": 80,
           "hostPort": 80,
           "protocol": "tcp",
@@ -40,7 +40,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/task-pumi-app",
+          "awslogs-group": "/ecs/task-uat-pumi",
           "mode": "non-blocking",
           "awslogs-create-group": "true",
           "max-buffer-size": "25m",
@@ -52,10 +52,10 @@
       "systemControls": []
     }
   ],
-  "family": "task-pumi-uat",
+  "family": "task-def-uat-pumi",
   "executionRoleArn": "arn:aws:iam::509399624827:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
-  "revision": 2,
+  "revision": 1,
   "volumes": [],
   "status": "ACTIVE",
   "requiresAttributes": [
@@ -95,13 +95,13 @@
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "cpu": "512",
-  "memory": "1024",
+  "cpu": "256",
+  "memory": "512",
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
   },
-  "registeredAt": "2025-04-10T11:15:14.751Z",
+  "registeredAt": "2025-04-12T14:58:52.821Z",
   "registeredBy": "arn:aws:iam::509399624827:root",
   "enableFaultInjection": false,
   "tags": []
