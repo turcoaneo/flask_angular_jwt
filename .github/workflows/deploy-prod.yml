@@ -17,7 +17,7 @@ jobs:
       AWS_ECR_REPOSITORY_NAME: pumi-repo-prod
       AWS_ECS_SERVICE_NAME: service-pumi-temp-prod-13-50-155-81
       AWS_ECS_CLUSTER_NAME: cluster-pumi
-      AWS_ECR_CONTAINER_NAME: container-pumi-app
+      AWS_ECR_CONTAINER_NAME: container-prod-pumi
 
     steps:
       - name: Checkout
