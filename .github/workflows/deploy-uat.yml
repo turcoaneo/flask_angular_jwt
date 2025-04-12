@@ -26,9 +26,9 @@ jobs:
       - name: Exit if the branch is not main
         id: exit-branch
         run: |
-          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then \
-            echo "Branch is not master, exiting." \
-            exit 0 \
+          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "Branch is not master, exiting."
+            exit 0
           fi
 
       - name: Configure AWS credentials
