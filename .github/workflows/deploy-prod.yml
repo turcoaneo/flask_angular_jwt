@@ -19,9 +19,13 @@ jobs:
       AWS_ECS_CLUSTER_NAME: cluster-pumi
       AWS_ECR_CONTAINER_NAME: container-prod-pumi
 
-    if: github.ref == 'refs/heads/deployment-fe-prod'
-
     steps:
+      - name: Exit if the branch is not prod
+        if: github.ref != 'refs/heads/deployment-fe-prod'
+        run: |
+          echo "Branch is not deployment-fe-prod, exiting."
+          exit 0
+
       - name: Checkout
         uses: actions/checkout@v2
 
