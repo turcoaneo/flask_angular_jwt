@@ -26,9 +26,9 @@ jobs:
       - name: Exit if the branch is not main
         id: exit-branch
         run: |
-          if [[ "${{ github.ref }}" != "refs/heads/main" && "${{ github.ref }}" != "refs/heads/deployment-fe-uat"]]; then
-            echo "Branch is not main or deployment-fe-uat, exiting."
-            exit 0
+          if [[ "${{ github.ref }}" != "refs/heads/main" && "${{ github.ref }}" != "refs/heads/deployment-fe-uat"]]; then \
+            echo "Branch is not main or deployment-fe-uat, exiting." \
+            exit 0 \
           fi
 
       - name: Configure AWS credentials
