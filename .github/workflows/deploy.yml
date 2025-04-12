@@ -73,7 +73,8 @@ jobs:
               --build-arg AWS_DEFAULT_REGION="${{ env.AWS_DEFAULT_REGION }}" \
               -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+      - name: Set output
+        run: echo "::set-output name=name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       # - name: Build, tag, and push image to Amazon ECR (with RDS)
       #   id: build-image
@@ -106,7 +107,7 @@ jobs:
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ env.AWS_ECS_SERVICE_NAME }}
