@@ -58,9 +58,6 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push image to Amazon ECR
-        uses: EndBug/latest-tag@latest
-        with:
-          ref: latest
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -75,6 +72,7 @@ jobs:
             --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
             --build-arg AWS_DEFAULT_REGION="${{ env.AWS_DEFAULT_REGION }}" \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+            -tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/ECR_REPOSITORY:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Fill in the new image ID in the Amazon ECS task definition
