@@ -82,7 +82,7 @@ jobs:
         with:
           task-definition: aws-task-definition.json
           container-name: ${{ env.AWS_ECR_CONTAINER_NAME }}
-          image: ${{ steps.build-image.outputs.image }}
+          image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_DEFAULT_REGION }}.amazonaws.com/${{ env.AWS_ECR_REPOSITORY_NAME }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
