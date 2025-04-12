@@ -11,6 +11,7 @@ name: Deploy PROD to Amazon ECS
 jobs:
   deploy:
     name: Deploy
+    if: github.ref == 'refs/heads/deployment-fe-prod'
     runs-on: ubuntu-latest
     env:
       AWS_DEFAULT_REGION: eu-north-1
@@ -18,8 +19,6 @@ jobs:
       AWS_ECS_SERVICE_NAME: service-pumi-temp-prod-13-50-155-81
       AWS_ECS_CLUSTER_NAME: cluster-pumi
       AWS_ECR_CONTAINER_NAME: container-prod-pumi
-
-    if: github.ref == 'refs/heads/deployment-fe-prod'
 
     steps:
       - name: Checkout
