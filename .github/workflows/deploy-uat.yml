@@ -20,7 +20,7 @@ jobs:
       AWS_ECR_CONTAINER_NAME: container-uat-pumi
 
     steps:
-      - name: Exit if the branch is not main
+      - name: Exit if the branch is prod
         if: github.ref == 'refs/heads/deployment-fe-prod'
         run: |
           echo "Branch is not main or deployment-fe-uat, exiting."
