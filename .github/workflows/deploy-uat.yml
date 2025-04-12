@@ -28,7 +28,7 @@ jobs:
         run: |
           if [ "${{ github.ref }}" != "refs/heads/main" ] && [ "${{ github.ref }}" != "refs/heads/deployment-fe-uat" ]; then
             echo "Branch is not main or deployment-fe-uat, exiting."
-            exit 0
+            exit 1
           else
             echo "Branch is main or deployment-fe-uat, continuing..."
           fi
