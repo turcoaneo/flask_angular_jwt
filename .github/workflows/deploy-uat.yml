@@ -1,6 +1,8 @@
 on:
   release:
     types: [ created ]
+    branches:
+      'deployment-fe-uat'
   # run manually
   workflow_dispatch:
 
