@@ -23,7 +23,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Exit if the branch is not master
+      - name: Exit if the branch is not main
+        id: exit-branch
         run: |
           if [[ "${{ github.ref }}" != "refs/heads/main" && "${{ github.ref }}" != "refs/heads/deployment-fe-uat"]]; then
             echo "Branch is not main or deployment-fe-uat, exiting."
