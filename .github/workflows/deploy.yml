@@ -21,6 +21,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Build NG for uat
+        run:
+          ENVIRONMENT=uat && python -m build_env $ENVIRONMENT
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -66,3 +70,7 @@ jobs:
           service: ${{ env.AWS_ECS_SERVICE_NAME }}
           cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
           wait-for-service-stability: true
+
+      - name: Revert build NG for uat
+        run:
+          ENVIRONMENT=dev && python -m build_env $ENVIRONMENT
