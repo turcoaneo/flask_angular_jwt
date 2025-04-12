@@ -11,7 +11,8 @@ name: Deploy UAT to Amazon ECS
 jobs:
   deploy:
     name: Deploy
-    if: ${{ github.ref == 'ref/heads/main' }} || ${{ github.ref == 'refs/heads/deployment-fe-prod' }}
+#    if: ${{ github.ref == 'ref/heads/main' }} || ${{ github.ref == 'refs/heads/deployment-fe-prod' }}
+    if: github.ref == 'ref/heads/deployment-fe-prod'
     runs-on: ubuntu-latest
     env:
       AWS_DEFAULT_REGION: eu-north-1
