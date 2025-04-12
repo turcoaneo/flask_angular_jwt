@@ -4,7 +4,7 @@ on:
   # run manually
   workflow_dispatch:
 
-name: Deploy to Amazon ECS
+name: Deploy PROD to Amazon ECS
 
 jobs:
   deploy:
@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_DEFAULT_REGION: eu-north-1
-      AWS_ECR_REPOSITORY_NAME: pumi-repo
-      AWS_ECS_SERVICE_NAME: service-pumi-lb-13-50-155-81
+      AWS_ECR_REPOSITORY_NAME: pumi-repo-prod
+      AWS_ECS_SERVICE_NAME: service-pumi-temp-prod-13-50-155-81
       AWS_ECS_CLUSTER_NAME: cluster-pumi
       AWS_ECR_CONTAINER_NAME: container-pumi-app
 
@@ -55,7 +55,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: aws-task-definition.json
+          task-definition: aws-task-definition-prod.json
           container-name: ${{ env.AWS_ECR_CONTAINER_NAME }}
           image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_DEFAULT_REGION }}.amazonaws.com/${{ env.AWS_ECR_REPOSITORY_NAME }}
 
