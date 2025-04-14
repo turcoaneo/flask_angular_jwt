@@ -6,7 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
-from resources.utils.db_utils import db
+from resources.utils.db_create import db
 
 
 utf_encoding = 'utf-8'

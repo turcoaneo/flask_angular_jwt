@@ -11,7 +11,7 @@ from sqlalchemy.exc import IntegrityError
 
 from resources.dto.user_dto import UserDTO, UserMiniDTO
 from resources.models.user import User
-from resources.utils.db_utils import db
+from resources.utils.db_create import db
 
 blp = Blueprint('User', "users", description="Operation with users")
 
