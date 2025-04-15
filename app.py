@@ -7,6 +7,7 @@ from flask_jwt_extended import JWTManager
 from resources.api.user_routes import blp
 from resources.utils.app_config import set_config_jwt, set_config_db, set_config_env
 from resources.utils.db_create import db
+from resources.utils.swagger_config import set_config_swagger, create_swagger_ui, SWAGGER_URL
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.logger.setLevel(logging.INFO)
@@ -24,11 +25,27 @@ if env == 'dev':
 set_config_env(config, env)
 set_config_db(config)
 
+set_config_swagger(config)
+authorizations = {
+    'apikey': {
+        'type': 'apiKey',
+        'in': 'header',
+        'name': 'authorization'
+    }
+}
+
 db.init_app(app)
 
 
 app.register_blueprint(blp)
-# app.register_blueprint(flask_blp)
+if env != 'prod':
+    app.register_blueprint(create_swagger_ui(), url_prefix=SWAGGER_URL)
+
+
+@app.get("/hello")
+def hello():
+    data = {"message": "Hello, Swagger World!"}
+    return data
 
 
 @app.route("/")
