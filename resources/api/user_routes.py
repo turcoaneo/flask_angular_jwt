@@ -9,9 +9,10 @@ from flask_smorest import Blueprint
 from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
 
-from resources.dto.user_dto import UserDTO, UserMiniDTO
+from resources.dto.user_dto import UserDTO, UserLoginDTO
 from resources.models.user import User
-from resources.utils.db_utils import db
+from resources.utils.db_create import db
+from resources.utils.swagger_config import SWAGGER_URL
 
 blp = Blueprint('User', "users", description="Operation with users")
 
@@ -21,11 +22,13 @@ exp_minutes = os.getenv('JWT_EXPIRATION_MINUTES')
 
 @blp.route('/login')
 class UserLogin(MethodView):
-    @blp.arguments(UserMiniDTO)
+    @blp.arguments(UserLoginDTO)
     @blp.response(200)
     def post(self, user_dto):
         username = user_dto['email']
         password = user_dto['password']
+        isSwaggerRequest = SWAGGER_URL in request.referrer
+        token_exp = 60 * 24 if isSwaggerRequest else exp_minutes
 
         user = User.query.filter(User.email == username).first()
 
@@ -36,7 +39,7 @@ class UserLogin(MethodView):
 
                 user.updated = func.utc_timestamp()
                 db.session.commit()
-                json_result = make_response_jwt_token(username)
+                json_result = make_response_jwt_token(username, token_exp)
                 return json_result
 
         password_display = password[:2] + '...' + password[-2:]
@@ -46,7 +49,7 @@ class UserLogin(MethodView):
 
 @blp.route('/token')
 class UserToken(MethodView):
-    @blp.response(200)
+    @blp.response(205)
     @jwt_required()
     def get(self):
         token = request.headers['Authorization'].split(None, 1)[1].strip()
@@ -59,21 +62,11 @@ class UserToken(MethodView):
 
             user.updated = func.utc_timestamp()
             db.session.commit()
-            json_result = make_response_jwt_token(email)
+            json_result = make_response_jwt_token(email, exp_minutes)
             return json_result
 
         f_app.logger.error(f"Not refreshed for user {email}")
         return make_response({'error': '401 Unauthorized'}, 401)
-
-
-@blp.route('/user/name/<string:user_name>')
-class UserByName(MethodView):
-    @blp.response(200, UserDTO)
-    @jwt_required()
-    def get(self, user_name):
-        db_result = get_user_by_alias(user_name)
-        json_result = db_result.as_dict()
-        return json_result
 
 
 @blp.route('/user')
@@ -107,27 +100,39 @@ class UserCRUD(MethodView):
 @blp.route('/user/id/<int:user_id>')
 class UserById(MethodView):
     @blp.response(200, UserDTO)
+    @jwt_required()
     def get(self, user_id):
         db_result = get_user_by_id(user_id)
         json_result = db_result.as_dict()
         return json_result
 
 
-@blp.route('/user/name/many/<string:user_name>')
+@blp.route('/user/alias/<string:alias>')
+class UserByAlias(MethodView):
+    @blp.response(200, UserDTO)
+    @jwt_required()
+    def get(self, alias):
+        db_result = get_user_by_alias(alias)
+        json_result = db_result.as_dict()
+        return json_result
+
+
+@blp.route('/user/alias/many/<string:alias>')
 class UserListByName(MethodView):
     @blp.response(200, UserDTO(many=True))
-    def get(self, user_name):
-        db_result = User.query.filter_by(alias=user_name)
+    @jwt_required()
+    def get(self, alias):
+        db_result = User.query.filter_by(alias=alias)
         result = [r.as_dict() for r in db_result]
         return jsonify(result)
 
 
-def make_response_jwt_token(email):
-    exp_time = timedelta(minutes=int(exp_minutes))
+def make_response_jwt_token(email, exp):
+    exp_time = timedelta(minutes=int(exp))
     access_token = create_access_token(identity=email, expires_delta=exp_time)
     f_app.logger.debug(access_token)
     json_result = make_response(
-        {'message': 'login successful', 'expires_minutes': exp_minutes, 'token': access_token}, 202)
+        {'message': 'login successful', 'expires_minutes': exp, 'token': access_token}, 201)
     return json_result
 
 

@@ -6,7 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
-from resources.utils.db_utils import db
+from resources.utils.db_create import db
 
 
 utf_encoding = 'utf-8'
@@ -50,4 +50,4 @@ class User(db.Model):
         return bcrypt.checkpw(password.encode(utf_encoding), self.password.encode(utf_encoding))
 
     def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns if c.name not in 'password'}

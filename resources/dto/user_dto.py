@@ -11,10 +11,6 @@ class UserDTO(Schema):
     expiration = fields.DateTime(required=False)
 
 
-class UserMiniDTO(Schema):
+class UserLoginDTO(Schema):
     email = fields.Str(required=True)
     password = fields.Str(required=True)
-
-
-class UserMicroDTO(Schema):
-    email = fields.Str(required=True)
