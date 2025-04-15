@@ -142,6 +142,3 @@ def get_user_by_alias(user_alias):
 
 def get_user_by_id(user_id):
     return User.query.filter_by(id=user_id).first()
-
-def decode():
-    return True
