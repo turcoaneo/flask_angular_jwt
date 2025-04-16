@@ -38,10 +38,28 @@ def copy_public_files(path, extension):
     subprocess.call(command, shell=True)
 
 
+def replace_index_links():
+    filein = FLASK_TEMPLATES_PATH + os.path.sep + "index.html"
+    fileout = FLASK_TEMPLATES_PATH + os.path.sep + "index.html"
+    f = open(filein, 'r')
+    filedata = f.read()
+    f.close()
+
+    new_data = filedata.replace("styles.css", "../static/styles.css")
+    new_data = new_data.replace("chunk", "../static/chunk")
+    new_data = new_data.replace("main.js", "../static/main.js")
+    new_data = new_data.replace("polyfills.js", "../static/polyfills.js")
+
+    f = open(fileout, 'w')
+    f.write(new_data)
+    f.close()
+
+
 try:
     move_built_files(FLASK_STATIC_PATH, '*.js')
     move_built_files(FLASK_STATIC_PATH, '*.css')
     copy_public_files(FLASK_STATIC_PATH, '*.png')
     move_built_files(FLASK_TEMPLATES_PATH, '*.html')
+    replace_index_links()
 except Exception as e:
     print(e)
