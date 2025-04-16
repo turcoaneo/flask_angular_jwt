@@ -23,7 +23,7 @@ export class AuthService {
   refreshJwtToken(): Observable<boolean> {
     let action:string = 'refreshing';
     console.log('Auth Service ' + action + ' token.');
-    return this.http.get<any>(this.webUrl + '/token')
+    return this.http.get<any>(this.webUrl + '/auth/token')
       .pipe(
         map(response => {
           sessionStorage.removeItem(JWT_TOKEN_KEY);
@@ -40,7 +40,7 @@ export class AuthService {
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
     console.log('Auth Service Login: ', userDetails.email);
-    return this.http.post<any>(this.webUrl + '/login', userDetails)
+    return this.http.post<any>(this.webUrl + '/auth/login', userDetails)
       .pipe(
         map(response => {
           this.extracted(response, 'login');

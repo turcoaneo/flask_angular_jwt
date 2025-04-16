@@ -35,7 +35,7 @@ var AuthService = class _AuthService {
   refreshJwtToken() {
     let action = "refreshing";
     console.log("Auth Service " + action + " token.");
-    return this.http.get(this.webUrl + "/token").pipe(map((response) => {
+    return this.http.get(this.webUrl + "/auth/token").pipe(map((response) => {
       sessionStorage.removeItem(JWT_TOKEN_KEY);
       this.extracted(response, action);
       return true;
@@ -47,7 +47,7 @@ var AuthService = class _AuthService {
   }
   login(userDetails) {
     console.log("Auth Service Login: ", userDetails.email);
-    return this.http.post(this.webUrl + "/login", userDetails).pipe(map((response) => {
+    return this.http.post(this.webUrl + "/auth/login", userDetails).pipe(map((response) => {
       this.extracted(response, "login");
       return true;
     }), catchError((error) => {
@@ -96,4 +96,4 @@ export {
   environment,
   AuthService
 };
-//# sourceMappingURL=chunk-KZZDHCJP.js.map
+//# sourceMappingURL=chunk-XITOMCV3.js.map
