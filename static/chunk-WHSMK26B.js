@@ -1,8 +1,9 @@
 import {
   AuthService,
+  BASE_USER_ENDPOINT,
   JWT_TOKEN_KEY,
   environment
-} from "./chunk-XITOMCV3.js";
+} from "./chunk-U5ZTSM5Z.js";
 import {
   HttpClient,
   NgClass,
@@ -59,7 +60,7 @@ var UserService = class _UserService {
   constructor(http) {
     this.http = http;
     this.webUrl = environment.domain;
-    this.userEndpoint = this.webUrl + "/user";
+    this.userEndpoint = this.webUrl + BASE_USER_ENDPOINT;
   }
   getUsers() {
     let users = [];
@@ -75,7 +76,7 @@ var UserService = class _UserService {
     }));
   }
   getUserByAlias(alias) {
-    return this.http.get(this.userEndpoint + "/name/" + alias).pipe(map((response) => {
+    return this.http.get(this.userEndpoint + "name/" + alias).pipe(map((response) => {
       return new UserDTO(response.email, response.alias);
     }), catchError((error) => {
       console.log(error);
@@ -313,4 +314,4 @@ var HomeComponent = class _HomeComponent {
 export {
   HomeComponent
 };
-//# sourceMappingURL=chunk-Z2PTQTC3.js.map
+//# sourceMappingURL=chunk-WHSMK26B.js.map

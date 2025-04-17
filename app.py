@@ -5,18 +5,19 @@ from flask import Flask, render_template
 from flask_jwt_extended import JWTManager
 
 from resources.utils.app_config import set_config_jwt, set_config_db, set_config_env
-from resources.utils.blueprint_iterator import identify_blueprints
+from resources.utils.blueprint_iterator import identify_blueprints_dynamically
 from resources.utils.db_create import db
 from resources.utils.swagger_config import set_config_swagger, create_swagger_ui, SWAGGER_URL
 
 
 def register_blueprints(blueprints_module='resources.api'):
-    for blp in identify_blueprints(blueprints_module):
+    for blp in identify_blueprints_dynamically(blueprints_module):
         app.register_blueprint(blp)
 
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.logger.setLevel(logging.INFO)
+app_logger: logging.Logger = app.logger
+app_logger.setLevel(logging.INFO)
 
 config = app.config
 
@@ -25,6 +26,7 @@ jwt = JWTManager(app)
 
 env = os.getenv('ENVIRONMENT')
 if env == 'dev':
+    app_logger.setLevel(logging.DEBUG)
     from flask_cors import CORS
 
     CORS(app)

@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {catchError, map, Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {JWT_TOKEN_KEY} from '../constants/list';
+import {BASE_AUTH_ENDPOINT, BASE_USER_ENDPOINT, JWT_TOKEN_KEY} from '../constants/list';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class AuthService {
   refreshJwtToken(): Observable<boolean> {
     let action:string = 'refreshing';
     console.log('Auth Service ' + action + ' token.');
-    return this.http.get<any>(this.webUrl + '/auth/token')
+    return this.http.get<any>(this.webUrl + BASE_AUTH_ENDPOINT + 'token')
       .pipe(
         map(response => {
           sessionStorage.removeItem(JWT_TOKEN_KEY);
@@ -40,7 +40,7 @@ export class AuthService {
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
     console.log('Auth Service Login: ', userDetails.email);
-    return this.http.post<any>(this.webUrl + '/auth/login', userDetails)
+    return this.http.post<any>(this.webUrl + BASE_AUTH_ENDPOINT + 'login', userDetails)
       .pipe(
         map(response => {
           this.extracted(response, 'login');
@@ -64,7 +64,7 @@ export class AuthService {
 
   signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {
     console.log('Auth Service Sign-up: ', userDetails.alias);
-    return this.http.post<any>(this.webUrl + '/user', userDetails)
+    return this.http.post<any>(this.webUrl + BASE_USER_ENDPOINT, userDetails)
       .pipe(
         map(() => {
           this.isUserRegistered = true;

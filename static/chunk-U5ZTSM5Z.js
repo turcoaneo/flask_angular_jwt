@@ -12,6 +12,8 @@ import {
 // src/app/constants/list.ts
 var REF = ".";
 var JWT_TOKEN_KEY = "JWT_Token";
+var BASE_USER_ENDPOINT = "/user/";
+var BASE_AUTH_ENDPOINT = "/auth/";
 
 // src/environments/environment.ts
 var environment = {
@@ -35,7 +37,7 @@ var AuthService = class _AuthService {
   refreshJwtToken() {
     let action = "refreshing";
     console.log("Auth Service " + action + " token.");
-    return this.http.get(this.webUrl + "/auth/token").pipe(map((response) => {
+    return this.http.get(this.webUrl + BASE_AUTH_ENDPOINT + "token").pipe(map((response) => {
       sessionStorage.removeItem(JWT_TOKEN_KEY);
       this.extracted(response, action);
       return true;
@@ -47,7 +49,7 @@ var AuthService = class _AuthService {
   }
   login(userDetails) {
     console.log("Auth Service Login: ", userDetails.email);
-    return this.http.post(this.webUrl + "/auth/login", userDetails).pipe(map((response) => {
+    return this.http.post(this.webUrl + BASE_AUTH_ENDPOINT + "login", userDetails).pipe(map((response) => {
       this.extracted(response, "login");
       return true;
     }), catchError((error) => {
@@ -65,7 +67,7 @@ var AuthService = class _AuthService {
   }
   signUp(userDetails) {
     console.log("Auth Service Sign-up: ", userDetails.alias);
-    return this.http.post(this.webUrl + "/user", userDetails).pipe(map(() => {
+    return this.http.post(this.webUrl + BASE_USER_ENDPOINT, userDetails).pipe(map(() => {
       this.isUserRegistered = true;
       return true;
     }), catchError((error) => {
@@ -93,7 +95,8 @@ var AuthService = class _AuthService {
 export {
   REF,
   JWT_TOKEN_KEY,
+  BASE_USER_ENDPOINT,
   environment,
   AuthService
 };
-//# sourceMappingURL=chunk-XITOMCV3.js.map
+//# sourceMappingURL=chunk-U5ZTSM5Z.js.map

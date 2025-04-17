@@ -3,6 +3,7 @@ import {catchError, map, Observable, of} from 'rxjs';
 import {User, UserDTO} from '../model/user.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {BASE_USER_ENDPOINT} from '../constants/list';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.webUrl = environment.domain;
-    this.userEndpoint = this.webUrl + '/user';
+    this.userEndpoint = this.webUrl + BASE_USER_ENDPOINT;
   }
 
   getUsers(): Observable<User[]> {
@@ -35,7 +36,7 @@ export class UserService {
   }
 
   getUserByAlias(alias: string): Observable<User> {
-    return this.http.get<UserDTO>(this.userEndpoint + '/name/' + alias)
+    return this.http.get<UserDTO>(this.userEndpoint + 'name/' + alias)
       .pipe(
         map(response => {
           return new UserDTO(response.email, response.alias);
