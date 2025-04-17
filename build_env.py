@@ -45,10 +45,10 @@ def replace_index_links():
     filedata = f.read()
     f.close()
 
-    new_data = filedata.replace("styles.css", "../static/styles.css")
-    new_data = new_data.replace("chunk", "../static/chunk")
-    new_data = new_data.replace("main.js", "../static/main.js")
-    new_data = new_data.replace("polyfills.js", "../static/polyfills.js")
+    new_data = filedata.replace('href="styles', 'href="../static/styles')
+    new_data = new_data.replace('href="chunk', 'href="../static/chunk')
+    new_data = new_data.replace('src="main', 'src="../static/main')
+    new_data = new_data.replace('src="polyfills', 'src="../static/polyfills')
 
     f = open(fileout, 'w')
     f.write(new_data)
