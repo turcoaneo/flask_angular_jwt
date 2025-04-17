@@ -1,5 +1,6 @@
 from flask_swagger_ui import get_swaggerui_blueprint
 
+SWAGGER_JWT_EXPIRATION_MINUTES = 60 * 24
 SWAGGER_URL = '/swagger-ui'
 
 

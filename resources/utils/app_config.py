@@ -1,6 +1,9 @@
 import os
 
 
+JWT_EXPIRATION_MINUTES = os.getenv('JWT_EXPIRATION_MINUTES')
+
+
 def set_config_jwt(config):
     config["JWT_SECRET_KEY"] = os.getenv('JWT_KEY')
     config['JWT_TOKEN_LOCATION'] = ['headers']
