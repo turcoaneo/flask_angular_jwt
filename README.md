@@ -25,7 +25,7 @@ docker exec -it pumi-dev-mysql /bin/bash
 docker exec my-mysql bash -c "mysql -V" or docker inspect mysql | grep MYSQL_
 
 mysql -h 127.0.0.1 -P 3306 -u root -p
-Enter password: my-secret-pw
+Enter password: ***
 ### switch to database name (mydb)
 USE mydb
 
@@ -48,6 +48,9 @@ aws ecs update-service --cluster cluster-pumi --service service-pumi --force-new
 ### UAT
 gh workflow run "Deploy UAT to Amazon ECS" --ref deployment-fe-uat
 gh run list --workflow=deploy-uat.yml
-# PROD
+### PROD
 gh workflow run "Deploy PROD to Amazon ECS" --ref deployment-fe-prod
 gh run list --workflow=deploy-prod.yml
+
+### add .env to .gitignore and remove cache
+git rm --cached -- .env;
