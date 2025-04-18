@@ -9,6 +9,5 @@ COPY . .
 
 #CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]
-CMD ["flask", "db", "upgrade"]
 
-#CMD flask db upgrade
+CMD flask db upgrade
