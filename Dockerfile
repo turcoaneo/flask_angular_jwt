@@ -7,5 +7,7 @@ RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED=1
 COPY . .
 
+RUN flask db upgrade
+
 #CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]
