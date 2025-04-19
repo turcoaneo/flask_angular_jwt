@@ -3,6 +3,7 @@ import os
 
 from flask import Flask, render_template
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 
 from resources.utils.app_config import set_config_jwt, set_config_db, set_config_env
 from resources.utils.blueprint_iterator import identify_blueprints_dynamically
@@ -35,6 +36,7 @@ set_config_env(config, env)
 
 set_config_db(config)
 db.init_app(app)
+migrate = Migrate(app, db)
 
 register_blueprints('resources.api')
 
