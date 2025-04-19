@@ -8,8 +8,8 @@ directory = 'angular-pumi'
 ANGULAR_PROJECT_PATH = os.path.join(CURRENT_DIRECTORY, directory)
 DIST_PATH = os.path.join(ANGULAR_PROJECT_PATH, 'dist', directory, 'browser')
 
-FLASK_STATIC_PATH = os.path.join(CURRENT_DIRECTORY, 'static')
-FLASK_TEMPLATES_PATH = os.path.join(CURRENT_DIRECTORY, 'templates')
+FLASK_STATIC_PATH = os.path.join(CURRENT_DIRECTORY, 'app\\static')
+FLASK_TEMPLATES_PATH = os.path.join(CURRENT_DIRECTORY, 'app\\templates')
 
 env = os.getenv('ENVIRONMENT', ' ')
 if env != ' ':
