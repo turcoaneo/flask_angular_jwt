@@ -18,14 +18,14 @@ class UserRepo:
         app_logger.debug(f'Getting all from [db = {self.db.engine.name}]')
         return self.db.session.query(User).all()
 
-    def save_user(self, user):
+    def save_user(self, user) -> bool | str:
         try:
             self.db.session.add(user)
             self.db.session.commit()
         except IntegrityError as ex:
             app_logger.error(f'IntegrityError: {ex}')
             return repr(ex)
-        return self.get_user_by_alias(user.alias)
+        return True
 
     def get_users_by_alias(self, user_alias) -> list[User]:
         app_logger.debug(f'Getting user by [alias = {user_alias}] from [db = {self.db.engine.name}]')

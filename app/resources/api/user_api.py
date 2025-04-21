@@ -1,3 +1,5 @@
+import os
+
 from flask.views import MethodView
 from flask_jwt_extended import jwt_required
 from flask_smorest import Blueprint
@@ -11,16 +13,20 @@ blp_user = Blueprint('user', __name__, url_prefix='/user', description="Operatio
 @blp_user.route('/')
 class UserCRUD(MethodView):
     user_service: UserService = UserService()
+    is_test_env = os.getenv('ENVIRONMENT') == 'test'
 
     @blp_user.response(200, UserDTO(many=True))
-    @jwt_required()
+    @jwt_required(is_test_env)
     def get(self):
         return self.user_service.get_all_users()
 
     @blp_user.arguments(UserDTO)
-    @blp_user.response(201, UserDTO)
+    @blp_user.response(201)
     def post(self, user_dto):
-        return self.user_service.create_user(user_dto)
+        result = self.user_service.create_user(user_dto)
+        if isinstance(result, str):
+            return result
+        return self.user_service.get_users_by_alias(user_dto['alias'])
 
 
 @blp_user.route('/id/<int:user_id>')

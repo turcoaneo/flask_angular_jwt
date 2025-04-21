@@ -22,7 +22,7 @@ def create_app():
     JWTManager(app)
 
     env = os.getenv('ENVIRONMENT')
-    if env == 'dev':
+    if env == 'dev' or env == 'test':
         app_logger.setLevel(logging.DEBUG)
         from flask_cors import CORS
 
@@ -39,10 +39,6 @@ def create_app():
         set_config_swagger(config)
         app.register_blueprint(create_swagger_ui(), url_prefix=SWAGGER_URL)
 
-    with app.app_context():
-        for blp in identify_api_blueprints_dynamically():
-            app.register_blueprint(blp)
-
         @app.get("/hello")
         def hello():
             data = {"message": "Hello, Swagger World!"}
@@ -53,3 +49,9 @@ def create_app():
             return render_template('index.html')
 
     return app
+
+
+def register_api_blueprints(app):
+    with app.app_context():
+        for blp in identify_api_blueprints_dynamically():
+            app.register_blueprint(blp)
