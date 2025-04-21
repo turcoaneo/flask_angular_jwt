@@ -13,10 +13,10 @@ def set_config_swagger(config):
 
 def create_swagger_ui():
     # Swagger UI route
-    API_URL = '/static/swagger/swagger.json'
+    api_url = '/static/swagger/swagger.json'
     return get_swaggerui_blueprint(
         SWAGGER_URL,
-        API_URL,
+        api_url,
         config={
             'app_name': "Pumi REST API - Swagger"
         }

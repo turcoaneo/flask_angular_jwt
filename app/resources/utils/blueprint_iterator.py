@@ -5,7 +5,7 @@ from pathlib import Path
 from flask_smorest import Blueprint
 
 
-def identify_blueprints_dynamically(package_name='resources.api') -> list[Blueprint]:
+def identify_api_blueprints_dynamically(package_name='app.resources.api') -> list[Blueprint]:
     """Identify all Blueprint instances found in the modules of the given package."""
     result = list()
     package_path_str = package_name.replace('.', os.path.sep)

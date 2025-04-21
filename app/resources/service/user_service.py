@@ -1,22 +1,21 @@
 from flask import jsonify, make_response, Response
 
-from resources.dto.user_dto import UserDTO
-from resources.models.user import User
-from resources.repository.user_repo import UserRepo
+from app.resources.models.user import User
+from app.resources.repository.user_repo import UserRepo
 
 
 class UserService:
     user_repo: UserRepo
 
-    def __init__(self, user_repo: UserRepo=UserRepo()):
+    def __init__(self, user_repo: UserRepo = UserRepo()):
         self.user_repo = user_repo
 
     def get_all_users(self) -> Response:
         db_result = self.user_repo.get_all_users()
         result = UserService.convert_db_list_to_dict(db_result)
         return jsonify(result)
-    
-    def create_user(self, user_dto: dict) -> dict | Response:
+
+    def create_user(self, user_dto: dict) -> bool | Response:
         user_name = user_dto['email']
         user_alias = user_dto['alias']
         user_pass = user_dto['password']
@@ -25,7 +24,7 @@ class UserService:
         db_result = self.user_repo.save_user(user)
         if isinstance(db_result, str):
             return make_response({"error": db_result}, 422)
-        return db_result.as_dict()
+        return db_result
 
     @staticmethod
     def convert_db_list_to_dict(db_result) -> list:

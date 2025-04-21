@@ -19,6 +19,7 @@ ng g environments for ng generate environments
 
 ## docker - mysql
 docker run -p 3307:3306 --name pumi-dev-mysql -e MYSQL_ROOT_PASSWORD=*** -e MYSQL_DATABASE=dev_db -d mysql:8.4.4
+docker run -p 5000 --name pumi-dev -e DATABASE_PW=Sky_Dev#*75  -e ENVIRONMENT=dev -e JWT_EXPIRATION_MINUTES=1 -e JWT_KEY=key_lime_pie -e PYTHONUNBUFFERED=1 -d pumi-local
 ### enter docker mysql bash
 docker exec -it pumi-dev-mysql /bin/bash
 ### check version

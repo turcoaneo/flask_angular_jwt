@@ -1,13 +1,12 @@
 from datetime import datetime
 
 import bcrypt
-from sqlalchemy import func, String
+from sqlalchemy import String
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
-from resources.utils.db_create import db
-
+from app.resources.utils.db_create import db
 
 utf_encoding = 'utf-8'
 
@@ -19,8 +18,8 @@ class User(db.Model):
     alias: Mapped[str] = mapped_column(String(30), unique=True)
     email: Mapped[str] = mapped_column(String(50), unique=True)
 
-    created: Mapped[datetime] = mapped_column(insert_default=func.utc_timestamp())
-    updated: Mapped[datetime] = mapped_column(nullable=False)
+    created: Mapped[datetime] = mapped_column(insert_default=datetime.now())
+    updated: Mapped[datetime] = mapped_column(nullable=True)
     expire: Mapped[datetime] = mapped_column(nullable=True)
 
     password: Mapped[str] = mapped_column(String(100), nullable=False)
@@ -28,7 +27,8 @@ class User(db.Model):
     def __init__(self, email, alias):
         self.email = email
         self.alias = alias
-        self.updated = func.utc_timestamp()
+        # noinspection PyTypeChecker
+        self.updated = datetime.now()
 
     @hybrid_property
     def password_hash(self):

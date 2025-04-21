@@ -89,7 +89,7 @@
         }
       }
     },
-    "/user": {
+    "/user/": {
       "get": {
         "tags": ["User"],
         "summary": "Get a list of users",
