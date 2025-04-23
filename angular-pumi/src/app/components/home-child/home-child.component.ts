@@ -2,11 +2,12 @@ import {Component, inject, input, signal} from '@angular/core';
 import {User, UserDTO} from '../../model/user.model';
 import {UserService} from '../../service/user.service';
 import {NgIf} from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-home-child',
   imports: [
-    NgIf
+    NgIf, RouterModule
   ],
   templateUrl: './home-child.component.html',
   standalone: true,

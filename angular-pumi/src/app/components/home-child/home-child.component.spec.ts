@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HomeChildComponent } from './home-child.component';
+import {HomeChildComponent} from './home-child.component';
+import {provideHttpClient} from '@angular/common/http';
+import {provideHttpClientTesting} from '@angular/common/http/testing';
 
 describe('HomeChildComponent', () => {
   let component: HomeChildComponent;
@@ -8,9 +10,9 @@ describe('HomeChildComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeChildComponent]
+      providers: [HomeChildComponent, provideHttpClient(), provideHttpClientTesting()]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HomeChildComponent);
     component = fixture.componentInstance;

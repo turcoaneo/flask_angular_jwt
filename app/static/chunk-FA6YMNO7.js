@@ -14688,7 +14688,8 @@ export {
   RouterOutlet,
   Router,
   RouterLink,
-  provideRouter
+  provideRouter,
+  RouterModule
 };
 /*! Bundled license information:
 
@@ -14720,4 +14721,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-OEXDCHFF.js.map
+//# sourceMappingURL=chunk-FA6YMNO7.js.map

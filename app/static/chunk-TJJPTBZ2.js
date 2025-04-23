@@ -2,7 +2,7 @@ import {
   CommonModule,
   NgIf,
   getDOM
-} from "./chunk-OEXDCHFF.js";
+} from "./chunk-FA6YMNO7.js";
 import {
   ChangeDetectorRef,
   Directive,
@@ -6948,4 +6948,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-XNGLKQ7M.js.map
+//# sourceMappingURL=chunk-TJJPTBZ2.js.map

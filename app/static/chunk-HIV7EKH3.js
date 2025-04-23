@@ -3,13 +3,14 @@ import {
   BASE_USER_ENDPOINT,
   JWT_TOKEN_KEY,
   environment
-} from "./chunk-U5ZTSM5Z.js";
+} from "./chunk-4AZWKILA.js";
 import {
   HttpClient,
   NgClass,
   NgIf,
-  Router
-} from "./chunk-OEXDCHFF.js";
+  Router,
+  RouterModule
+} from "./chunk-FA6YMNO7.js";
 import {
   catchError,
   inject,
@@ -204,10 +205,10 @@ var HomeChildComponent = class _HomeChildComponent {
       \u0275\u0275advance();
       \u0275\u0275textInterpolate(ctx.email);
     }
-  }, dependencies: [NgIf], styles: ["\n\n#user-click[_ngcontent-%COMP%] {\n  cursor: pointer;\n  color: blue;\n}\n#user-click[_ngcontent-%COMP%]:hover {\n  color: #999;\n}\n/*# sourceMappingURL=home-child.component.css.map */"] });
+  }, dependencies: [NgIf, RouterModule], styles: ["\n\n#user-click[_ngcontent-%COMP%] {\n  cursor: pointer;\n  color: blue;\n}\n#user-click[_ngcontent-%COMP%]:hover {\n  color: #999;\n}\n/*# sourceMappingURL=home-child.component.css.map */"] });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HomeChildComponent, { className: "HomeChildComponent", filePath: "src/app/components/home-child/home-child.component.ts", lineNumber: 16 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HomeChildComponent, { className: "HomeChildComponent", filePath: "src/app/components/home-child/home-child.component.ts", lineNumber: 17 });
 })();
 
 // src/app/home/home.component.ts
@@ -314,4 +315,4 @@ var HomeComponent = class _HomeComponent {
 export {
   HomeComponent
 };
-//# sourceMappingURL=chunk-WHSMK26B.js.map
+//# sourceMappingURL=chunk-HIV7EKH3.js.map
