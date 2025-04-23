@@ -13,10 +13,10 @@ blp_user = Blueprint('user', __name__, url_prefix='/user', description="Operatio
 @blp_user.route('/')
 class UserCRUD(MethodView):
     user_service: UserService = UserService()
-    is_test_env = os.getenv('ENVIRONMENT') == 'test'
+    is_optional_for_test = os.getenv('ENVIRONMENT') == 'test'
 
     @blp_user.response(200, UserDTO(many=True))
-    @jwt_required(is_test_env)
+    @jwt_required(is_optional_for_test)
     def get(self):
         return self.user_service.get_all_users()
 
