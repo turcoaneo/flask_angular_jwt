@@ -55,3 +55,6 @@ gh run list --workflow=deploy-prod.yml
 
 ### add .env to .gitignore and remove cache
 git rm --cached -- .env;
+
+## tests
+npx jest --clearCache && npx jest

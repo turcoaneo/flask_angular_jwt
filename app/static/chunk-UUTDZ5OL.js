@@ -1,6 +1,6 @@
 import {
   RouterLink
-} from "./chunk-OEXDCHFF.js";
+} from "./chunk-FA6YMNO7.js";
 import {
   ɵsetClassDebugInfo,
   ɵɵdefineComponent,
@@ -34,4 +34,4 @@ var AboutComponent = class _AboutComponent {
 export {
   AboutComponent
 };
-//# sourceMappingURL=chunk-SUXX2POZ.js.map
+//# sourceMappingURL=chunk-UUTDZ5OL.js.map

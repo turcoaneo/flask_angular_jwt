@@ -1,7 +1,7 @@
 import {
   AuthService,
   JWT_TOKEN_KEY
-} from "./chunk-U5ZTSM5Z.js";
+} from "./chunk-4AZWKILA.js";
 import {
   APP_BASE_HREF,
   NgIf,
@@ -12,7 +12,7 @@ import {
   provideHttpClient,
   provideRouter,
   withInterceptors
-} from "./chunk-OEXDCHFF.js";
+} from "./chunk-FA6YMNO7.js";
 import {
   inject,
   provideZoneChangeDetection,
@@ -48,7 +48,7 @@ var appRoutes = [
   },
   {
     path: "about",
-    loadComponent: () => import("./chunk-SUXX2POZ.js").then((m) => m.AboutComponent)
+    loadComponent: () => import("./chunk-UUTDZ5OL.js").then((m) => m.AboutComponent)
   },
   {
     path: "contact",
@@ -57,19 +57,19 @@ var appRoutes = [
   {
     path: "home",
     canActivate: [AuthGuardService],
-    loadComponent: () => import("./chunk-WHSMK26B.js").then((m) => m.HomeComponent)
+    loadComponent: () => import("./chunk-HIV7EKH3.js").then((m) => m.HomeComponent)
   },
   {
     path: "signin",
-    loadComponent: () => import("./chunk-II7NVQKQ.js").then((m) => m.SignInComponent)
+    loadComponent: () => import("./chunk-G4OA2PMU.js").then((m) => m.SignInComponent)
   },
   {
     path: "logout",
-    loadComponent: () => import("./chunk-MQNBKWBV.js").then((m) => m.LogoutComponent)
+    loadComponent: () => import("./chunk-CU3KBNO7.js").then((m) => m.LogoutComponent)
   },
   {
     path: "signup",
-    loadComponent: () => import("./chunk-DQNAQWHP.js").then((m) => m.SignUpComponent)
+    loadComponent: () => import("./chunk-G6O4FYMZ.js").then((m) => m.SignUpComponent)
   }
 ];
 
