@@ -56,5 +56,12 @@ gh run list --workflow=deploy-prod.yml
 ### add .env to .gitignore and remove cache
 git rm --cached -- .env;
 
-## tests
+## run tests in cmd
+### python
+[//]: # (runs all, including unittest)
+python -m pytest
+
+[//]: # (runs only unittest with logs)
+python -m unittest
+### ng
 npx jest --clearCache && npx jest
