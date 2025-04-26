@@ -6,6 +6,10 @@ export class UserDTO {
     this.email = email;
     this.alias = alias;
   }
+
+  static createUserDTO(user: User) {
+    return new UserDTO(user.email, user.alias);
+  }
 }
 
 export type User = {

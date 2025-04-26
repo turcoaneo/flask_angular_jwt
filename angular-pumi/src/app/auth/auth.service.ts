@@ -27,7 +27,7 @@ export class AuthService {
       .pipe(
         map(response => {
           sessionStorage.removeItem(JWT_TOKEN_KEY);
-          this.extracted(response, action);
+          this.setSessionToken(response, action);
           return true;
         }),
         catchError(error => {
@@ -43,7 +43,7 @@ export class AuthService {
     return this.http.post<any>(this.webUrl + BASE_AUTH_ENDPOINT + 'login', userDetails)
       .pipe(
         map(response => {
-          this.extracted(response, 'login');
+          this.setSessionToken(response, 'login');
           return true;
         }),
         catchError(error => {
@@ -52,14 +52,6 @@ export class AuthService {
           return of(false);
         })
       );
-  }
-
-  private extracted(response: any, action: string) {
-    let token_duration_minutes = response['expires_minutes'];
-    this.jwt_expiration_seconds = token_duration_minutes * 60;
-    console.log(action , 'jwt expiration seconds:', this.jwt_expiration_seconds);
-    sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
-    this.isLoggedIn = true;
   }
 
   signUp(userDetails: { email: string; alias: string, password: string }): Observable<boolean> {
@@ -89,5 +81,13 @@ export class AuthService {
 
   isUserCreated(): boolean {
     return this.isUserRegistered;
+  }
+
+  private setSessionToken(response: any, action: string) {
+    let token_duration_minutes = response['expires_minutes'];
+    this.jwt_expiration_seconds = token_duration_minutes * 60;
+    console.log(action , 'jwt expiration seconds:', this.jwt_expiration_seconds);
+    sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
+    this.isLoggedIn = true;
   }
 }
