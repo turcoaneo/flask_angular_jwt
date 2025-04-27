@@ -6801,28 +6801,28 @@ var ReactiveFormsModule = class _ReactiveFormsModule {
 // src/app/components/user-pass-group/user-pass-group.component.ts
 function UserPassGroupComponent_small_6_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 10);
+    \u0275\u0275elementStart(0, "small", 11);
     \u0275\u0275text(1, " Email is required! ");
     \u0275\u0275elementEnd();
   }
 }
 function UserPassGroupComponent_small_7_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 11);
+    \u0275\u0275elementStart(0, "small", 12);
     \u0275\u0275text(1, " Email does not match the usual pattern (name[at]domain.com)! ");
     \u0275\u0275elementEnd();
   }
 }
 function UserPassGroupComponent_small_15_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 10);
+    \u0275\u0275elementStart(0, "small", 11);
     \u0275\u0275text(1, " Password is required! ");
     \u0275\u0275elementEnd();
   }
 }
 function UserPassGroupComponent_small_16_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 10);
+    \u0275\u0275elementStart(0, "small", 11);
     \u0275\u0275text(1, " Password does not match the required pattern! ");
     \u0275\u0275elementEnd();
   }
@@ -6864,7 +6864,7 @@ var UserPassGroupComponent = class _UserPassGroupComponent {
       provide: ControlContainer,
       useFactory: () => inject(ControlContainer, { skipSelf: true })
     }
-  ])], decls: 17, vars: 16, consts: [[3, "formGroupName"], [3, "for"], ["type", "text", "aria-describedby", "signInHelp", "placeholder", "Enter email", 3, "formControlName", "name", "id"], ["id", "signInHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["class", "error block", 4, "ngIf"], ["class", "error block", "id", "error", 4, "ngIf"], [1, "input-placeholder"], ["type", "password", "aria-describedby", "signInHelp", "placeholder", "*********", 2, "float", "left", 3, "formControlName", "name", "id", "type"], ["id", "togglePass", 3, "click"], ["id", "signInPassHelp", 1, "form-text", "text-muted", "block", "mt-6"], [1, "error", "block"], ["id", "error", 1, "error", "block"]], template: function UserPassGroupComponent_Template(rf, ctx) {
+  ])], decls: 17, vars: 10, consts: [[3, "formGroupName"], ["for", "componentEmail"], ["name", "componentEmail", "type", "text", "id", "componentEmail", "aria-describedby", "signInHelp", "placeholder", "Enter email", 3, "formControlName"], ["id", "signInHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["class", "error block", 4, "ngIf"], ["class", "error block", "id", "error", 4, "ngIf"], ["for", "componentPass"], [1, "input-placeholder"], ["name", "componentPass", "type", "password", "id", "componentPass", "aria-describedby", "signInHelp", "placeholder", "*********", 2, "float", "left", 3, "formControlName", "type"], ["id", "togglePass", 3, "click"], ["id", "signInPassHelp", 1, "form-text", "text-muted", "block", "mt-6"], [1, "error", "block"], ["id", "error", 1, "error", "block"]], template: function UserPassGroupComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "fieldset", 0)(1, "label", 1);
       \u0275\u0275text(2, "Email");
@@ -6874,51 +6874,43 @@ var UserPassGroupComponent = class _UserPassGroupComponent {
       \u0275\u0275text(5, "Use email pattern (user[at]domain.com)!");
       \u0275\u0275elementEnd();
       \u0275\u0275template(6, UserPassGroupComponent_small_6_Template, 2, 0, "small", 4)(7, UserPassGroupComponent_small_7_Template, 2, 0, "small", 5);
-      \u0275\u0275elementStart(8, "label", 1);
+      \u0275\u0275elementStart(8, "label", 6);
       \u0275\u0275text(9, "Password");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(10, "span", 6);
-      \u0275\u0275element(11, "input", 7);
-      \u0275\u0275elementStart(12, "i", 8);
+      \u0275\u0275elementStart(10, "span", 7);
+      \u0275\u0275element(11, "input", 8);
+      \u0275\u0275elementStart(12, "i", 9);
       \u0275\u0275listener("click", function UserPassGroupComponent_Template_i_click_12_listener() {
         return ctx.togglePassInputView();
       });
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(13, "small", 9);
+      \u0275\u0275elementStart(13, "small", 10);
       \u0275\u0275text(14, " Minimum eight characters, at least one letter, one number and one special character! ");
       \u0275\u0275elementEnd();
       \u0275\u0275template(15, UserPassGroupComponent_small_15_Template, 2, 0, "small", 4)(16, UserPassGroupComponent_small_16_Template, 2, 0, "small", 4);
       \u0275\u0275elementEnd();
     }
     if (rf & 2) {
-      let tmp_5_0;
-      let tmp_6_0;
-      let tmp_13_0;
-      let tmp_14_0;
+      let tmp_2_0;
+      let tmp_3_0;
+      let tmp_7_0;
+      let tmp_8_0;
       \u0275\u0275propertyInterpolate("formGroupName", ctx.componentKey);
-      \u0275\u0275advance();
-      \u0275\u0275propertyInterpolate("for", ctx.componentEmail);
-      \u0275\u0275advance(2);
+      \u0275\u0275advance(3);
       \u0275\u0275propertyInterpolate("formControlName", ctx.componentEmail);
-      \u0275\u0275propertyInterpolate("name", ctx.componentEmail);
-      \u0275\u0275propertyInterpolate("id", ctx.componentEmail);
       \u0275\u0275advance(3);
-      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_5_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentEmail)) == null ? null : tmp_5_0.errors == null ? null : tmp_5_0.errors["required"]));
+      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_2_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentEmail)) == null ? null : tmp_2_0.errors == null ? null : tmp_2_0.errors["required"]));
       \u0275\u0275advance();
-      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_6_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentEmail)) == null ? null : tmp_6_0.errors == null ? null : tmp_6_0.errors["pattern"]));
-      \u0275\u0275advance();
-      \u0275\u0275propertyInterpolate("for", ctx.componentPass);
-      \u0275\u0275advance(3);
+      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_3_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentEmail)) == null ? null : tmp_3_0.errors == null ? null : tmp_3_0.errors["pattern"]));
+      \u0275\u0275advance(4);
       \u0275\u0275propertyInterpolate("formControlName", ctx.componentPass);
-      \u0275\u0275propertyInterpolate("name", ctx.componentPass);
-      \u0275\u0275propertyInterpolate("id", ctx.componentPass);
       \u0275\u0275property("type", ctx.hideText ? "password" : "text");
       \u0275\u0275advance();
       \u0275\u0275classMap(ctx.hideText ? "bi bi-eye-slash" : "bi bi-eye");
       \u0275\u0275advance(3);
-      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_13_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentPass)) == null ? null : tmp_13_0.errors == null ? null : tmp_13_0.errors["required"]));
+      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_7_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentPass)) == null ? null : tmp_7_0.errors == null ? null : tmp_7_0.errors["required"]));
       \u0275\u0275advance();
-      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_14_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentPass)) == null ? null : tmp_14_0.errors == null ? null : tmp_14_0.errors["pattern"]));
+      \u0275\u0275property("ngIf", ctx.parentFormGroup.dirty && (ctx.parentFormGroup.controls[ctx.componentKey] == null ? null : (tmp_8_0 = ctx.parentFormGroup.controls[ctx.componentKey].get(ctx.componentPass)) == null ? null : tmp_8_0.errors == null ? null : tmp_8_0.errors["pattern"]));
     }
   }, dependencies: [ReactiveFormsModule, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, FormControlName, FormGroupName, CommonModule, NgIf], styles: ["\n\n#togglePass[_ngcontent-%COMP%] {\n  display: inline-block;\n  margin-left: -30px;\n  margin-top: 5px;\n  font-size: 24px;\n  cursor: pointer;\n}\n/*# sourceMappingURL=user-pass-group.component.css.map */", "\n\nlabel[_ngcontent-%COMP%] {\n  display: block;\n  width: 100%;\n  margin-top: 10px;\n  margin-bottom: 5px;\n  text-align: left;\n  color: #333;\n  font-weight: bold;\n}\ninput[_ngcontent-%COMP%] {\n  display: block;\n  width: 100%;\n  margin-bottom: 15px;\n  padding: 10px;\n  box-sizing: border-box;\n  border: 1px solid #666;\n  border-radius: 5px;\n}\nbutton[_ngcontent-%COMP%] {\n  padding: 6px;\n  border-radius: 10px;\n  margin-top: 15px;\n  margin-bottom: 15px;\n  border: none;\n  color: white;\n  background-color: #999;\n  width: 100%;\n  font-size: 24px;\n  cursor: pointer;\n}\nbutton[_ngcontent-%COMP%]:hover {\n  color: #666;\n  background-color: #333;\n}\n.error.block[_ngcontent-%COMP%] {\n  color: darkred;\n}\n.input-placeholder[_ngcontent-%COMP%] {\n  position: relative;\n}\n/*# sourceMappingURL=style.css.map */"] });
 };
@@ -6948,4 +6940,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-7PHQ4L3F.js.map
+//# sourceMappingURL=chunk-6QLRJTA5.js.map

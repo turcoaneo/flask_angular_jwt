@@ -61,7 +61,7 @@ var appRoutes = [
   },
   {
     path: "signin",
-    loadComponent: () => import("./chunk-5UY7FZII.js").then((m) => m.SignInComponent)
+    loadComponent: () => import("./chunk-MAGTDVX3.js").then((m) => m.SignInComponent)
   },
   {
     path: "logout",
@@ -69,7 +69,7 @@ var appRoutes = [
   },
   {
     path: "signup",
-    loadComponent: () => import("./chunk-VTLFBLIR.js").then((m) => m.SignUpComponent)
+    loadComponent: () => import("./chunk-QJFQG2Q3.js").then((m) => m.SignUpComponent)
   }
 ];
 
