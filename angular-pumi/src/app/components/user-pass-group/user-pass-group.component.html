@@ -7,7 +7,7 @@
          *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentEmail)?.errors?.['required']">
     Email is required!
   </small>
-  <small class="error block"
+  <small class="error block" id="error"
          *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentEmail)?.errors?.['pattern']">
     Email does not match the usual pattern (name[at]domain.com)!
   </small>
