@@ -19,11 +19,11 @@
          (click)="toggleConfirmPassInputView()"></i>
       </span>
       <small id="signUpConfirmPassHelp" class="form-text text-muted block mt-6">Re-type your password!</small>
-      <small class="error block" *ngIf="signUpForm.controls.signUpConfirmPass.dirty &&
+      <small id="signUpConfirmPassError" class="error block" *ngIf="signUpForm.controls.signUpConfirmPass.dirty &&
              signUpForm.controls.signUpConfirmPass.errors?.['required']">
         Password confirmation is required!
       </small>
-      <small class="error block" *ngIf="signUpForm.dirty && isInvaliPassConfirmation()">
+      <small id="confirmPassError" class="error block" *ngIf="signUpForm.dirty && isInvaliPassConfirmation()">
         Password confirmation does not match the former password!
       </small>
     </fieldset>
