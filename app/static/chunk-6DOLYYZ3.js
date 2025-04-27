@@ -39,7 +39,7 @@ var AuthService = class _AuthService {
     console.log("Auth Service " + action + " token.");
     return this.http.get(this.webUrl + BASE_AUTH_ENDPOINT + "token").pipe(map((response) => {
       sessionStorage.removeItem(JWT_TOKEN_KEY);
-      this.extracted(response, action);
+      this.setSessionToken(response, action);
       return true;
     }), catchError((error) => {
       console.log(error);
@@ -50,20 +50,13 @@ var AuthService = class _AuthService {
   login(userDetails) {
     console.log("Auth Service Login: ", userDetails.email);
     return this.http.post(this.webUrl + BASE_AUTH_ENDPOINT + "login", userDetails).pipe(map((response) => {
-      this.extracted(response, "login");
+      this.setSessionToken(response, "login");
       return true;
     }), catchError((error) => {
       console.log(error);
       this.isLoggedIn = false;
       return of(false);
     }));
-  }
-  extracted(response, action) {
-    let token_duration_minutes = response["expires_minutes"];
-    this.jwt_expiration_seconds = token_duration_minutes * 60;
-    console.log(action, "jwt expiration seconds:", this.jwt_expiration_seconds);
-    sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
-    this.isLoggedIn = true;
   }
   signUp(userDetails) {
     console.log("Auth Service Sign-up: ", userDetails.alias);
@@ -86,6 +79,13 @@ var AuthService = class _AuthService {
   isUserCreated() {
     return this.isUserRegistered;
   }
+  setSessionToken(response, action) {
+    let token_duration_minutes = response["expires_minutes"];
+    this.jwt_expiration_seconds = token_duration_minutes * 60;
+    console.log(action, "jwt expiration seconds:", this.jwt_expiration_seconds);
+    sessionStorage.setItem(JWT_TOKEN_KEY, response.token);
+    this.isLoggedIn = true;
+  }
   static \u0275fac = function AuthService_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _AuthService)(\u0275\u0275inject(HttpClient));
   };
@@ -99,4 +99,4 @@ export {
   environment,
   AuthService
 };
-//# sourceMappingURL=chunk-4AZWKILA.js.map
+//# sourceMappingURL=chunk-6DOLYYZ3.js.map

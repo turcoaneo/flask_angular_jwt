@@ -3,7 +3,7 @@ import {
   BASE_USER_ENDPOINT,
   JWT_TOKEN_KEY,
   environment
-} from "./chunk-4AZWKILA.js";
+} from "./chunk-6DOLYYZ3.js";
 import {
   HttpClient,
   NgClass,
@@ -44,12 +44,15 @@ import {
 } from "./chunk-3XL36YAT.js";
 
 // src/app/model/user.model.ts
-var UserDTO = class {
+var UserDTO = class _UserDTO {
   email;
   alias;
   constructor(email, alias) {
     this.email = email;
     this.alias = alias;
+  }
+  static createUserDTO(user) {
+    return new _UserDTO(user.email, user.alias);
   }
 };
 
@@ -315,4 +318,4 @@ var HomeComponent = class _HomeComponent {
 export {
   HomeComponent
 };
-//# sourceMappingURL=chunk-HIV7EKH3.js.map
+//# sourceMappingURL=chunk-GFX6MEYO.js.map
