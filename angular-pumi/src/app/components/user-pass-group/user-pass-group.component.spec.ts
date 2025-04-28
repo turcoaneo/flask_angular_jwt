@@ -5,8 +5,8 @@ import {UserPassGroupComponent} from './user-pass-group.component';
 
 @Component({
   selector: 'app-host',
-  standalone: true, // ✅ Standalone component
-  imports: [ReactiveFormsModule, UserPassGroupComponent], // ✅ Import ReactiveFormsModule
+  standalone: true,
+  imports: [ReactiveFormsModule, UserPassGroupComponent],
   template: `
       <form [formGroup]="parentFormGroup">
           <app-user-pass-group [componentEmail]=any [componentKey]=any [componentPass]=any></app-user-pass-group>
@@ -22,7 +22,7 @@ describe('UserPassGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserPassGroupComponent], // ✅ Import the standalone component instead of declaring it
+      imports: [UserPassGroupComponent],
       providers: [
         {provide: ControlContainer, useValue: {control: new FormGroup({})}}
       ],

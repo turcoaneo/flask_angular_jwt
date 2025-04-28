@@ -10,11 +10,11 @@ import {
   UserPassGroupComponent,
   Validators,
   ɵNgNoValidate
-} from "./chunk-TJJPTBZ2.js";
+} from "./chunk-UNCPSUP2.js";
 import {
   AuthService,
   REF
-} from "./chunk-4AZWKILA.js";
+} from "./chunk-GKGZQCWX.js";
 import {
   CommonModule,
   NgIf,
@@ -40,21 +40,21 @@ import {
 // src/app/components/sign-up/sign-up.component.ts
 function SignUpComponent_small_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 13);
+    \u0275\u0275elementStart(0, "small", 15);
     \u0275\u0275text(1, " Signup's been unsuccessful! Retry with different email and/or alias... ");
     \u0275\u0275elementEnd();
   }
 }
 function SignUpComponent_small_16_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 13);
+    \u0275\u0275elementStart(0, "small", 16);
     \u0275\u0275text(1, " Password confirmation is required! ");
     \u0275\u0275elementEnd();
   }
 }
 function SignUpComponent_small_17_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 13);
+    \u0275\u0275elementStart(0, "small", 17);
     \u0275\u0275text(1, " Password confirmation does not match the former password! ");
     \u0275\u0275elementEnd();
   }
@@ -109,7 +109,7 @@ var SignUpComponent = class _SignUpComponent {
   static \u0275fac = function SignUpComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _SignUpComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _SignUpComponent, selectors: [["app-sign-up"]], decls: 27, vars: 10, consts: [[1, "mb-2"], ["class", "error block", 4, "ngIf"], [3, "ngSubmit", "formGroup"], ["for", "signUpAlias"], ["formControlName", "signUpAlias", "name", "signUpAlias", "type", "text", "id", "signUpAlias", "placeholder", "Enter alias"], [3, "componentKey", "componentEmail", "componentPass"], ["for", "signUpConfirmPass"], [1, "input-placeholder"], ["formControlName", "signUpConfirmPass", "name", "signUpConfirmPass", "id", "signUpConfirmPass", "placeholder", "Confirm password", "aria-describedby", "signUpConfirmHelp", "onpaste", "return false;", "onDrag", "return false", "onDrop", "return false", "autocomplete", "off", 2, "float", "left", 3, "type"], ["id", "toggleConfirmPass", 3, "click"], ["id", "signUpConfirmPassHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["type", "submit", "id", "login-submit", 1, "btn", "btn-primary"], ["routerLink", "/signin", 2, "text-decoration", "none"], [1, "error", "block"]], template: function SignUpComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _SignUpComponent, selectors: [["app-sign-up"]], decls: 27, vars: 10, consts: [[1, "mb-2"], ["class", "error block", 4, "ngIf"], [3, "ngSubmit", "formGroup"], ["for", "signUpAlias"], ["formControlName", "signUpAlias", "name", "signUpAlias", "type", "text", "id", "signUpAlias", "placeholder", "Enter alias"], [3, "componentKey", "componentEmail", "componentPass"], ["for", "signUpConfirmPass"], [1, "input-placeholder"], ["formControlName", "signUpConfirmPass", "name", "signUpConfirmPass", "id", "signUpConfirmPass", "placeholder", "Confirm password", "aria-describedby", "signUpConfirmHelp", "onpaste", "return false;", "onDrag", "return false", "onDrop", "return false", "autocomplete", "off", 2, "float", "left", 3, "type"], ["id", "toggleConfirmPass", 3, "click"], ["id", "signUpConfirmPassHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["id", "signUpConfirmPassError", "class", "error block", 4, "ngIf"], ["id", "confirmPassError", "class", "error block", 4, "ngIf"], ["type", "submit", "id", "login-submit", 1, "btn", "btn-primary"], ["routerLink", "/signin", 2, "text-decoration", "none"], [1, "error", "block"], ["id", "signUpConfirmPassError", 1, "error", "block"], ["id", "confirmPassError", 1, "error", "block"]], template: function SignUpComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "div", 0);
       \u0275\u0275template(1, SignUpComponent_small_1_Template, 2, 0, "small", 1);
@@ -136,16 +136,16 @@ var SignUpComponent = class _SignUpComponent {
       \u0275\u0275elementStart(14, "small", 10);
       \u0275\u0275text(15, "Re-type your password!");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(16, SignUpComponent_small_16_Template, 2, 0, "small", 1)(17, SignUpComponent_small_17_Template, 2, 0, "small", 1);
+      \u0275\u0275template(16, SignUpComponent_small_16_Template, 2, 0, "small", 11)(17, SignUpComponent_small_17_Template, 2, 0, "small", 12);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(18, "button", 11);
+      \u0275\u0275elementStart(18, "button", 13);
       \u0275\u0275text(19, "Submit");
       \u0275\u0275elementEnd()()();
       \u0275\u0275elementStart(20, "p");
       \u0275\u0275text(21, "Already registered? ");
       \u0275\u0275elementStart(22, "span");
       \u0275\u0275text(23, " Go to ");
-      \u0275\u0275elementStart(24, "a", 12);
+      \u0275\u0275elementStart(24, "a", 14);
       \u0275\u0275text(25, "sign in");
       \u0275\u0275elementEnd();
       \u0275\u0275text(26, " page ");
@@ -177,4 +177,4 @@ var SignUpComponent = class _SignUpComponent {
 export {
   SignUpComponent
 };
-//# sourceMappingURL=chunk-G6O4FYMZ.js.map
+//# sourceMappingURL=chunk-DNTD4QUG.js.map
