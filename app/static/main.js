@@ -1,7 +1,7 @@
 import {
   AuthService,
   JWT_TOKEN_KEY
-} from "./chunk-6DOLYYZ3.js";
+} from "./chunk-GKGZQCWX.js";
 import {
   APP_BASE_HREF,
   NgIf,
@@ -57,19 +57,19 @@ var appRoutes = [
   {
     path: "home",
     canActivate: [AuthGuardService],
-    loadComponent: () => import("./chunk-GFX6MEYO.js").then((m) => m.HomeComponent)
+    loadComponent: () => import("./chunk-5K53VHOQ.js").then((m) => m.HomeComponent)
   },
   {
     path: "signin",
-    loadComponent: () => import("./chunk-MAGTDVX3.js").then((m) => m.SignInComponent)
+    loadComponent: () => import("./chunk-SQMLX3H6.js").then((m) => m.SignInComponent)
   },
   {
     path: "logout",
-    loadComponent: () => import("./chunk-LPHZWS67.js").then((m) => m.LogoutComponent)
+    loadComponent: () => import("./chunk-FTHTXNMF.js").then((m) => m.LogoutComponent)
   },
   {
     path: "signup",
-    loadComponent: () => import("./chunk-QJFQG2Q3.js").then((m) => m.SignUpComponent)
+    loadComponent: () => import("./chunk-DNTD4QUG.js").then((m) => m.SignUpComponent)
   }
 ];
 

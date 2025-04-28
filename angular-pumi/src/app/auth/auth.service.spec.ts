@@ -40,7 +40,7 @@ describe('AuthService', () => {
 
   it('should return true on signin', (done) => {
     let mockUsers = helper.getMockUsers();
-    let serviceMethod = service.login({email: mockUsers[0].email, password: 'signUpPass'});
+    let serviceMethod = service.login({email: mockUsers[0].email, password: 'signInPass'});
     let expected = true;
     helper.subscribeAndPrepareAssert(serviceMethod, expected, done);
     let endpoint = '/auth/login';

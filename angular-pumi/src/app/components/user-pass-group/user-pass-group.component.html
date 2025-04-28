@@ -1,19 +1,19 @@
 <fieldset formGroupName={{componentKey}}>
-  <label for={{componentEmail}}>Email</label>
-  <input formControlName={{componentEmail}} name={{componentEmail}} type="text" id={{componentEmail}}
+  <label for="componentEmail">Email</label>
+  <input formControlName={{componentEmail}} name="componentEmail" type="text" id="componentEmail"
          aria-describedby="signInHelp" placeholder="Enter email">
   <small id="signInHelp" class="form-text text-muted block mt-6">Use email pattern (user[at]domain.com)!</small>
-  <small class="error block"
+  <small class="error block" id="requiredEmailError"
          *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentEmail)?.errors?.['required']">
     Email is required!
   </small>
-  <small class="error block" id="error"
+  <small class="error block" id="patternEmailError"
          *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentEmail)?.errors?.['pattern']">
     Email does not match the usual pattern (name[at]domain.com)!
   </small>
-  <label for={{componentPass}}>Password</label>
+  <label for="componentPass">Password</label>
   <span class="input-placeholder">
-    <input formControlName={{componentPass}} name={{componentPass}} type="password" id={{componentPass}}
+    <input formControlName={{componentPass}} name="componentPass" type="password" id="componentPass"
            style="float: left" [type]="hideText ? 'password' : 'text'"
            aria-describedby="signInHelp" placeholder="*********">
     <i [class]="hideText ? 'bi bi-eye-slash' : 'bi bi-eye'" id="togglePass" (click)="togglePassInputView()"></i>
@@ -21,11 +21,11 @@
   <small id="signInPassHelp" class="form-text text-muted block mt-6">
     Minimum eight characters, at least one letter, one number and one special character!
   </small>
-  <small class="error block"
+  <small class="error block" id="requiredPassError"
          *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentPass)?.errors?.['required']">
     Password is required!
   </small>
-  <small class="error block"
+  <small class="error block" id="patternPassError"
          *ngIf="parentFormGroup.dirty && parentFormGroup.controls[componentKey]?.get(componentPass)?.errors?.['pattern']">
     Password does not match the required pattern!
   </small>

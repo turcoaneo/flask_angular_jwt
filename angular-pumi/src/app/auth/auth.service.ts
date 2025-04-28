@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   login(userDetails: { email: string; password: string }): Observable<boolean> {
-    console.log('Auth Service Login: ', userDetails.email);
+    console.log('Auth Service Login: ' + userDetails.email);
     return this.http.post<any>(this.webUrl + BASE_AUTH_ENDPOINT + 'login', userDetails)
       .pipe(
         map(response => {

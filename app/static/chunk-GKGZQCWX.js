@@ -48,7 +48,7 @@ var AuthService = class _AuthService {
     }));
   }
   login(userDetails) {
-    console.log("Auth Service Login: ", userDetails.email);
+    console.log("Auth Service Login: " + userDetails.email);
     return this.http.post(this.webUrl + BASE_AUTH_ENDPOINT + "login", userDetails).pipe(map((response) => {
       this.setSessionToken(response, "login");
       return true;
@@ -99,4 +99,4 @@ export {
   environment,
   AuthService
 };
-//# sourceMappingURL=chunk-6DOLYYZ3.js.map
+//# sourceMappingURL=chunk-GKGZQCWX.js.map

@@ -6801,28 +6801,28 @@ var ReactiveFormsModule = class _ReactiveFormsModule {
 // src/app/components/user-pass-group/user-pass-group.component.ts
 function UserPassGroupComponent_small_6_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 11);
+    \u0275\u0275elementStart(0, "small", 13);
     \u0275\u0275text(1, " Email is required! ");
     \u0275\u0275elementEnd();
   }
 }
 function UserPassGroupComponent_small_7_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 12);
+    \u0275\u0275elementStart(0, "small", 14);
     \u0275\u0275text(1, " Email does not match the usual pattern (name[at]domain.com)! ");
     \u0275\u0275elementEnd();
   }
 }
 function UserPassGroupComponent_small_15_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 11);
+    \u0275\u0275elementStart(0, "small", 15);
     \u0275\u0275text(1, " Password is required! ");
     \u0275\u0275elementEnd();
   }
 }
 function UserPassGroupComponent_small_16_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "small", 11);
+    \u0275\u0275elementStart(0, "small", 16);
     \u0275\u0275text(1, " Password does not match the required pattern! ");
     \u0275\u0275elementEnd();
   }
@@ -6864,7 +6864,7 @@ var UserPassGroupComponent = class _UserPassGroupComponent {
       provide: ControlContainer,
       useFactory: () => inject(ControlContainer, { skipSelf: true })
     }
-  ])], decls: 17, vars: 10, consts: [[3, "formGroupName"], ["for", "componentEmail"], ["name", "componentEmail", "type", "text", "id", "componentEmail", "aria-describedby", "signInHelp", "placeholder", "Enter email", 3, "formControlName"], ["id", "signInHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["class", "error block", 4, "ngIf"], ["class", "error block", "id", "error", 4, "ngIf"], ["for", "componentPass"], [1, "input-placeholder"], ["name", "componentPass", "type", "password", "id", "componentPass", "aria-describedby", "signInHelp", "placeholder", "*********", 2, "float", "left", 3, "formControlName", "type"], ["id", "togglePass", 3, "click"], ["id", "signInPassHelp", 1, "form-text", "text-muted", "block", "mt-6"], [1, "error", "block"], ["id", "error", 1, "error", "block"]], template: function UserPassGroupComponent_Template(rf, ctx) {
+  ])], decls: 17, vars: 10, consts: [[3, "formGroupName"], ["for", "componentEmail"], ["name", "componentEmail", "type", "text", "id", "componentEmail", "aria-describedby", "signInHelp", "placeholder", "Enter email", 3, "formControlName"], ["id", "signInHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["class", "error block", "id", "requiredEmailError", 4, "ngIf"], ["class", "error block", "id", "patternEmailError", 4, "ngIf"], ["for", "componentPass"], [1, "input-placeholder"], ["name", "componentPass", "type", "password", "id", "componentPass", "aria-describedby", "signInHelp", "placeholder", "*********", 2, "float", "left", 3, "formControlName", "type"], ["id", "togglePass", 3, "click"], ["id", "signInPassHelp", 1, "form-text", "text-muted", "block", "mt-6"], ["class", "error block", "id", "requiredPassError", 4, "ngIf"], ["class", "error block", "id", "patternPassError", 4, "ngIf"], ["id", "requiredEmailError", 1, "error", "block"], ["id", "patternEmailError", 1, "error", "block"], ["id", "requiredPassError", 1, "error", "block"], ["id", "patternPassError", 1, "error", "block"]], template: function UserPassGroupComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "fieldset", 0)(1, "label", 1);
       \u0275\u0275text(2, "Email");
@@ -6887,7 +6887,7 @@ var UserPassGroupComponent = class _UserPassGroupComponent {
       \u0275\u0275elementStart(13, "small", 10);
       \u0275\u0275text(14, " Minimum eight characters, at least one letter, one number and one special character! ");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(15, UserPassGroupComponent_small_15_Template, 2, 0, "small", 4)(16, UserPassGroupComponent_small_16_Template, 2, 0, "small", 4);
+      \u0275\u0275template(15, UserPassGroupComponent_small_15_Template, 2, 0, "small", 11)(16, UserPassGroupComponent_small_16_Template, 2, 0, "small", 12);
       \u0275\u0275elementEnd();
     }
     if (rf & 2) {
@@ -6940,4 +6940,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-6QLRJTA5.js.map
+//# sourceMappingURL=chunk-UNCPSUP2.js.map

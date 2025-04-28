@@ -1,6 +1,6 @@
 import {
   AuthService
-} from "./chunk-6DOLYYZ3.js";
+} from "./chunk-GKGZQCWX.js";
 import {
   Router
 } from "./chunk-FA6YMNO7.js";
@@ -40,4 +40,4 @@ var LogoutComponent = class _LogoutComponent {
 export {
   LogoutComponent
 };
-//# sourceMappingURL=chunk-LPHZWS67.js.map
+//# sourceMappingURL=chunk-FTHTXNMF.js.map
