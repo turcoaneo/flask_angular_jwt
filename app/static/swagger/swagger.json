@@ -150,6 +150,37 @@
         }
       }
     },
+    "/user/id/{user_id}": {
+      "get": {
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "summary": "Get a user by id",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user/alias/{alias}": {
       "get": {
         "tags": ["User"],
