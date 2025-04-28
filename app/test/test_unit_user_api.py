@@ -48,11 +48,6 @@ class TestWebApp(unittest.TestCase):
         self.app = None
         self.app_ctx = None
 
-    @staticmethod
-    def assert_response_list_element_equals(response, index, attr, value):
-        data = json.loads(response.data.decode('utf-8'))
-        assert data[index][attr] == value
-
     def test_app(self):
         assert self.app is not None
         assert current_app == self.app
@@ -73,3 +68,23 @@ class TestWebApp(unittest.TestCase):
             assert response._status_code == 200
             data = json.loads(response.get_data())
             self.assertEqual("Hello, Swagger World!", data['message'])
+
+    @staticmethod
+    def assert_response_empty(response):
+        data = json.loads(response.data.decode('utf-8'))
+        assert data['response'] is None
+
+    @staticmethod
+    def assert_response_equals(response, attr, value):
+        data = json.loads(response.data.decode('utf-8'))
+        assert data[attr] == value
+
+    @staticmethod
+    def assert_response_empty_list(response):
+        data = json.loads(response.data.decode('utf-8'))
+        assert data == []
+
+    @staticmethod
+    def assert_response_list_element_equals(response, index, attr, value):
+        data = json.loads(response.data.decode('utf-8'))
+        assert data[index][attr] == value
