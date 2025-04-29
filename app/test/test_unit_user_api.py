@@ -70,21 +70,30 @@ class TestWebApp(unittest.TestCase):
             self.assertEqual("Hello, Swagger World!", data['message'])
 
     @staticmethod
-    def assert_response_empty(response):
-        data = json.loads(response.data.decode('utf-8'))
-        assert data['response'] is None
-
-    @staticmethod
     def assert_response_equals(response, attr, value):
         data = json.loads(response.data.decode('utf-8'))
         assert data[attr] == value
 
     @staticmethod
-    def assert_response_empty_list(response):
+    def assert_response_empty(response):
         data = json.loads(response.data.decode('utf-8'))
-        assert data == []
+        if isinstance(data, list):
+            assert data == []
+        else:
+            if hasattr(data, 'response'):
+                assert data['response'] is None
 
     @staticmethod
     def assert_response_list_element_equals(response, index, attr, value):
         data = json.loads(response.data.decode('utf-8'))
         assert data[index][attr] == value
+
+    @staticmethod
+    def assert_response_facade(response, attr=None, value=None, index=None):
+        if attr is not None:
+            if index is not None:
+                TestWebApp.assert_response_list_element_equals(response, index, attr, value)
+            else:
+                TestWebApp.assert_response_equals(response, attr, value)
+        else:
+            TestWebApp.assert_response_empty(response)
