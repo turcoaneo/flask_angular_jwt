@@ -9,7 +9,3 @@ gunicorn
 mysql-connector-python
 flask-migrate
 flask_swagger_ui
-flask-cors
-pytest
-pytest-mock
-python-dotenv
