@@ -1,0 +1,5 @@
+flask-cors
+pytest
+pytest-mock
+python-dotenv
+selenium

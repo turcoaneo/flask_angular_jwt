@@ -65,3 +65,21 @@ python -m pytest
 python -m unittest
 ### ng
 npx jest --clearCache && npx jest
+
+## Run individual parameterized test from command line (terminal)
+### Not working in Pycharm individually, only at class level
+pytest test/test_ner_client.py -k test_givenModel_whenCallSpacy_thenReturnGroup
+
+## Run end-2-end test
+### ...in terminal, first step
+python app.py
+venv\Scripts\python app.py (Windows cmd)
+### Run test from Pycharm
+test_index_has_form
+### or run from other terminal
+### Run one test method
+pytest app/test/e2e/test_selenium_index_e2e.py -k test_index_has_form
+### Run one test method from virtual env (Git Bash)
+venv/Scripts/pytest app/test/e2e/test_selenium_index_e2e.py -k test_index_has_form
+### Run class test methods from virtual env (Windows cmd)
+venv\Scripts\pytest app/test/e2e/test_selenium_index_e2e.py
