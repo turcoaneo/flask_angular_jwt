@@ -1,4 +1,4 @@
-<h2 [ngClass]="{'warning-color': isToExpire}"> {{ homeMessage() }}
+<h2 id="home-heading" [ngClass]="{'warning-color': isToExpire}"> {{ homeMessage() }}
   <span class="my-tooltip" *ngIf="isToExpire" id="ext" (click)="resetSessionTimeout()">=>
     <span class="my-tooltiptext">Extend</span>
   </span>
