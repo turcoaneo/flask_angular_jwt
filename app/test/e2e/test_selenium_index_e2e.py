@@ -10,6 +10,7 @@ class E2ETests(unittest.TestCase):
     expected_about_title = 'Welcome!'
     about_heading_title = 'about-heading-title'
     input_text_id = 'input-text'
+    button_welcome_about_id = 'button-about'
 
     TIMEOUT = 10
 
@@ -36,11 +37,11 @@ class E2ETests(unittest.TestCase):
         self.assertEqual(self.expected_about_title, heading)
 
     def test_about_has_button(self):
-        button = self.find_text_by_data_test_id_css('button', 'button-welcome')
+        button = self.find_text_by_data_test_id_css('button', self.button_welcome_about_id)
         self.assertIsNotNone(button)
 
     def test_index_has_form(self):
-        button = self.find_element_by_data_test_id_css('button', 'button-welcome')
+        button = self.find_element_by_data_test_id_css('button', self.button_welcome_about_id)
         button.click()
         form_sign_in = self.find_element_by_data_test_id_css('form', 'form-sign-in')
         self.assertIsNotNone(form_sign_in)
@@ -60,8 +61,8 @@ class E2ETests(unittest.TestCase):
         about_heading = self.find_element_by_css('h2')
         self.assertEqual(about_heading.text, 'About')
 
-        # button = self.find_element_by_data_test_id_css('button', 'button-about')
-        # button.click()
+        button = self.find_element_by_data_test_id_css('button', 'button-about')
+        button.click()
 
         link = self.find_element_by_css('h1')
         link.click()
@@ -69,8 +70,34 @@ class E2ETests(unittest.TestCase):
         home_heading = self.find_element_by_id_css('h2', 'home-heading')
         self.assertEqual(home_heading.text, 'Session in progress')
 
+        static_users = self.get_ul_li_elements('user-static-list', True)
+        users = static_users + self.get_ul_li_elements('user-server-list', True)
+
         link = self.find_element_by_id('user-click')
         link.click()
+
+        span_text = self.find_element_by_id_css('span', 'user-info').text
+        self.assertTrue(self.check_user_in_text(users, span_text))
+
+    @staticmethod
+    def check_user_in_text(users, text):
+        for user in users:
+            user_text = user.text
+            user_text_split = user_text.split(':')
+            alias = user_text_split[0].rstrip(' ')
+            email = user_text_split[1].lstrip(' ')
+            if alias in text and email in text:
+                return True
+        return False
+
+    def get_ul_li_elements(self, data_test_id, is_print=False):
+        static_user_ul = self.find_element_by_data_test_id_css('ul', data_test_id)
+        elements = static_user_ul.find_elements(By.CSS_SELECTOR, 'li')
+        if is_print:
+            for item in elements:
+                print()
+                print(item.text)
+        return elements
 
     def find_element_by_css(self, tag):
         return WebDriverWait(self.driver, self.TIMEOUT).until(ec.visibility_of_element_located((By.CSS_SELECTOR, tag)))

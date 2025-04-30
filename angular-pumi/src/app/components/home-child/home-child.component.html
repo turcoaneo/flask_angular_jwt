@@ -2,7 +2,7 @@
 <h2>Nested component -  message from parent: {{parentMessage()}}</h2>
 <h3>Nested component -  local component message: {{localMessage()}}</h3>
 <h4>Home users:</h4>
-<ul>
+<ul data-test-id="user-static-list">
   @for (user of users(); track $index) {
     <li class="mb-2 flex gap-4 items-center">
       <span>{{user.email}} : {{user.alias}}</span>
@@ -10,7 +10,7 @@
   }
 </ul>
 <h4>Server users:</h4>
-<ul>
+<ul data-test-id="user-server-list">
   @for (user of userList; track $index) {
     <li class="mb-2 flex gap-4 items-center">
       <span>{{user.email}} : {{user.alias}}</span>
@@ -18,4 +18,4 @@
   }
 </ul>
 <p><span id="user-click" (click)="getUserByAlias()">User (click for random):</span>
-  {{alias}}<span *ngIf="this.alias != null">, with email: </span>{{email}}</p>
+  <span id="user-info">{{alias}}<span *ngIf="this.alias != null">, with email: </span>{{email}}</span></p>
