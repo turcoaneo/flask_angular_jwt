@@ -48,7 +48,7 @@ var appRoutes = [
   },
   {
     path: "about",
-    loadComponent: () => import("./chunk-UUTDZ5OL.js").then((m) => m.AboutComponent)
+    loadComponent: () => import("./chunk-UBQOKV23.js").then((m) => m.AboutComponent)
   },
   {
     path: "contact",
@@ -57,11 +57,11 @@ var appRoutes = [
   {
     path: "home",
     canActivate: [AuthGuardService],
-    loadComponent: () => import("./chunk-5K53VHOQ.js").then((m) => m.HomeComponent)
+    loadComponent: () => import("./chunk-SUPKO2GY.js").then((m) => m.HomeComponent)
   },
   {
     path: "signin",
-    loadComponent: () => import("./chunk-SQMLX3H6.js").then((m) => m.SignInComponent)
+    loadComponent: () => import("./chunk-TUJ4EJ6B.js").then((m) => m.SignInComponent)
   },
   {
     path: "logout",
