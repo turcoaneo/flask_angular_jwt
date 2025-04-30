@@ -10,3 +10,4 @@ mysql-connector-python
 flask-migrate
 flask_swagger_ui
 selenium
+python-dotenv

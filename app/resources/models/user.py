@@ -6,6 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
+from app.resources.constants.user_type import UserType
 from app.resources.utils.db_create import db
 
 utf_encoding = 'utf-8'
@@ -23,6 +24,8 @@ class User(db.Model):
     expire: Mapped[datetime] = mapped_column(nullable=True)
 
     password: Mapped[str] = mapped_column(String(100), nullable=False)
+
+    role: Mapped[int] = mapped_column(insert_default=UserType.employer)
 
     def __init__(self, email, alias):
         self.email = email
