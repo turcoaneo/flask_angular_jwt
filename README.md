@@ -1,5 +1,6 @@
-# pumi app: angular flask sqlalchemy mysql
+# Login with JWT app: angular flask sqlalchemy mysql
 Integrating angular with python and sqlalchemy for mysql docker container
+Functional tests for both FE and BE.
 ## install
 python -m venv venv
 venv\Scripts\activate
@@ -36,11 +37,11 @@ flask db upgrade
 flask db downgrade
 
 ## aws
-aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 509399624827.dkr.ecr.eu-north-1.amazonaws.com
+aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin XXX.dkr.ecr.eu-north-1.amazonaws.com
 
-docker build -t pumi-repo .
-docker tag pumi-repo:latest 509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo:latest
-docker push 509399624827.dkr.ecr.eu-north-1.amazonaws.com/pumi-repo:latest
+docker build -t XXX-repo .
+docker tag XXX-repo:latest XXX.dkr.ecr.eu-north-1.amazonaws.com/XXX-repo:latest
+docker push XXX.dkr.ecr.eu-north-1.amazonaws.com/XXX-repo:latest
 
 aws ecs update-service --cluster cluster-pumi --service service-pumi --force-new-deployment > app/resources/sample_update_service.json
 
@@ -65,13 +66,6 @@ python -m unittest
 ### ng
 npx jest --clearCache && npx jest
 
-## Run individual parameterized test from command line (terminal)
-### Not working in Pycharm individually, only at class level
-pytest test/test_ner_client.py -k test_givenModel_whenCallSpacy_thenReturnGroup
-
-## Run end-2-end test
-### ...in terminal, first step
-python app.py
 venv\Scripts\python app.py (Windows cmd)
 ### Run test from Pycharm
 test_index_has_form
