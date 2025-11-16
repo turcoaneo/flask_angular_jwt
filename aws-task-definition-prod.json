@@ -15,24 +15,7 @@
         }
       ],
       "essential": true,
-      "environment": [
-        {
-          "name": "JWT_KEY",
-          "value": "key_lime_pie"
-        },
-        {
-          "name": "JWT_EXPIRATION_MINUTES",
-          "value": "60"
-        },
-        {
-          "name": "DATABASE_PW",
-          "value": "Sky_Auro#*75"
-        },
-        {
-          "name": "ENVIRONMENT",
-          "value": "prod"
-        }
-      ],
+      "environment": [],
       "environmentFiles": [],
       "mountPoints": [],
       "volumesFrom": [],
